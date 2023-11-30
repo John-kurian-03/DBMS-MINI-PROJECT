@@ -1,5 +1,5 @@
 # DBMS-MINI-PROJECT
-Project on CRISIS SHELTER MANAGEMENT 
+## Project on CRISIS SHELTER MANAGEMENT 
 
-html, css, javascript as frontend
-python and flask as backend
+### HTML, CSS, JAVASCRIPT AS FRONTEND <br>
+### PYTHON AND FLASK AS BACKEND
