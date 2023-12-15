@@ -24,7 +24,7 @@ CREATE TABLE Person (
     EntryDate DATE,
     ExitDate DATE,
     ReasonForEntry VARCHAR(50)
-    Status ENUM('Active', 'Inactive', 'Transferred'),
+    Status ENUM('Active', 'Inactive'),
     ShelterID INT,
     FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
 ) AUTO_INCREMENT=4000;
