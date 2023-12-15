@@ -1,0 +1,113 @@
+~~~ Person Table Values   (First 2 Shelter have a good amount of person Rest are lessened for simplicity)
+
+
+-- Persons for Harmony Shelter (ShelterID = 1) (16 in number)
+
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Alex', 'Anderson', '1985-06-20', 'Male', '8765432101', '9876543210', '42 Rose St, Jude Street, Ernakulam', '2023-01-01', '2023-02-15', 1),
+('Sophia', 'Smith', '1993-09-15', 'Female', '8765432102', '9876543211', '28 Lily St, Gandhi Nagar, Thiruvananthapuram', '2023-01-02', NULL, 1),
+('Ethan', 'Taylor', '1980-12-08', 'Male', '8765432103', '9876543212', '75 Tulip St, Fort Kochi', '2023-01-03', '2023-02-28', 1),
+('Isabella', 'Jones', '1989-03-25', 'Female', '8765432104', '9876543213', '15 Sunflower St, Alappuzha', '2023-01-04', NULL, 1),
+('Mason', 'Brown', '1995-08-12', 'Male', '8765432105', '9876543214', '63 Orchid St, Kottayam', '2023-01-05', '2023-03-15', 1),
+('Olivia', 'Miller', '1991-11-30', 'Female', '8765432106', '9876543215', '39 Marigold St, Kochi', '2023-01-06', NULL, 1),
+('Liam', 'Davis', '1987-04-17', 'Male', '8765432107', '9876543216', '84 Lavender St, Thiruvalla', '2023-01-07', '2023-04-01', 1),
+('Emma', 'Garcia', '1994-01-22', 'Female', '8765432108', '9876543217', '21 Jasmine St, Munnar', '2023-01-08', NULL, 1),
+('Noah', 'Rodriguez', '1983-07-07', 'Male', '8765432109', '9876543218', '50 Daffodil St, Kannur', '2023-01-09', '2023-05-10', 1),
+('Ava', 'Martinez', '1998-05-14', 'Female', '8765432110', '9876543219', '95 Bluebell St, Palakkad', '2023-01-10', NULL, 1),
+('Lucas', 'Hernandez', '1986-09-29', 'Male', '8765432111', '9876543220', '10 Petunia St, Calicut', '2023-01-11', '2023-06-20', 1),
+('Lily', 'Lopez', '1997-02-03', 'Female', '8765432112', '9876543221', '42 Rose St, Jude Street, Ernakulam', '2023-01-12', NULL, 1),
+('Caden', 'Gonzalez', '1982-08-18', 'Male', '8765432113', '9876543222', '28 Lily St, Gandhi Nagar, Thiruvananthapuram', '2023-01-13', '2023-07-01', 1),
+('Abigail', 'Perez', '1989-04-05', 'Female', '8765432114', '9876543223', '75 Tulip St, Fort Kochi', '2023-01-14', NULL, 1),
+('Elijah', 'Ramirez', '1994-10-12', 'Male', '8765432115', '9876543224', '15 Sunflower St, Alappuzha', '2023-01-15', '2023-08-12', 1),
+('Scarlett', 'Torres', '1987-06-27', 'Female', '8765432116', '9876543225', '63 Orchid St, Kottayam', '2023-01-16', NULL, 1);
+
+
+-- Persons for ShelterID = 2 (Peaceful Haven) (15 in number - Max Capacity)
+
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Liam', 'Gupta', '1988-07-12', 'Male', '9876543210', '9876543211', '56 Rose St, Jude Street, Malad', '2023-01-01', '2023-02-15', 2),
+('Olivia', 'Patel', '1996-02-25', 'Female', '9876543212', '9876543213', '78 Lily St, Andheri', '2023-02-15', NULL, 2),
+('Noah', 'Sharma', '1981-11-10', 'Male', '9876543214', '9876543215', '92 Tulip St, Powai', '2023-03-10', '2023-04-01', 2),
+('Emma', 'Kumar', '1993-04-05', 'Female', '9876543216', '9876543217', '34 Sunflower St, Bandra', '2023-04-02', NULL, 2),
+('Aiden', 'Verma', '1985-09-18', 'Male', '9876543218', '9876543219', '67 Orchid St, Dadar', '2023-05-20', '2023-06-01', 2),
+('Sophia', 'Jain', '1990-01-30', 'Female', '9876543220', '9876543221', '45 Marigold St, Vile Parle', '2023-06-10', '2023-07-01', 2),
+('Jackson', 'Singh', '1986-08-15', 'Male', '9876543222', '9876543223', '22 Lily St, Santacruz', '2023-07-05', '2023-08-01', 2),
+('Ava', 'Kapoor', '1997-05-22', 'Female', '9876543224', '9876543225', '81 Rose St, Jogeshwari', '2023-08-02', NULL, 2),
+('Lucas', 'Malhotra', '1984-12-07', 'Male', '9876543226', '9876543227', '50 Orchid St, Colaba', '2023-09-01', '2023-10-01', 2),
+('Isabella', 'Mehta', '1992-03-14', 'Female', '9876543228', '9876543229', '73 Sunflower St, Chembur', '2023-10-01', '2023-11-01', 2),
+('Mason', 'Chopra', '1989-09-29', 'Male', '9876543230', '9876543231', '39 Marigold St, Goregaon', '2023-11-02', '2023-12-01', 2),
+('Aria', 'Shah', '1998-06-03', 'Female', '9876543232', '9876543233', '64 Tulip St, Bandra Kurla Complex', '2023-12-02', NULL, 2),
+('Ethan', 'Rai', '1983-01-18', 'Male', '9876543234', '9876543235', '28 Rose St, Malad West', '2024-01-01', '2024-02-01', 2),
+('Avery', 'Gandhi', '1995-04-05', 'Female', '9876543236', '9876543237', '55 Orchid St, Kandivali', '2024-02-01', NULL, 2),
+('Luna', 'Yadav', '1987-11-20', 'Male', '9876543238', '9876543239', '79 Sunflower St, Versova', '2024-03-01', '2024-04-01', 2);
+
+
+-- Persons for ShelterID = 3 (Caring Home) (8 in number)
+
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Aria', 'Kumar', '1988-05-10', 'Female', '9876543240', '9876543241', '22 Maple St, Aundh, Pune', '2023-01-01', '2023-02-01', 3),
+('Eli', 'Sharma', '1996-09-25', 'Male', '9876543242', '9876543243', '45 Oak St, Baner, Pune', '2023-02-15', NULL, 3),
+('Luna', 'Verma', '1981-04-15', 'Female', '9876543244', '9876543245', '68 Pine St, Kothrud, Pune', '2023-03-10', '2023-04-01', 3),
+('Milo', 'Patel', '1993-11-05', 'Male', '9876543246', '9876543247', '31 Cedar St, Viman Nagar, Pune', '2023-04-02', NULL, 3),
+('Ava', 'Shah', '1985-02-20', 'Female', '9876543248', '9876543249', '54 Redwood St, Koregaon Park, Pune', '2023-05-20', '2023-06-01', 3),
+('Leo', 'Mehta', '1990-07-30', 'Male', '9876543250', '9876543251', '77 Elm St, Magarpatta City, Pune', '2023-06-10', '2023-07-01', 3),
+('Stella', 'Singh', '1986-03-15', 'Female', '9876543252', '9876543253', '13 Birch St, Hadapsar, Pune', '2023-07-05', NULL, 3),
+('Avery', 'Gupta', '1997-01-22', 'Male', '9876543254', '9876543255', '89 Walnut St, Kharadi, Pune', '2023-08-02', NULL, 3);
+
+
+-- Persons for ShelterID = 4 (Serene Shelter) (10 in number)
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Ethan', 'Martins', '1988-05-10', 'Male', '9876543260', '9876543261', '22 Maple St, Panjim, Goa', '2023-01-01', '2023-02-01', 4),
+('Sophia', 'Fisher', '1996-09-25', 'Female', '9876543262', '9876543263', '45 Oak St, Margao, Goa', '2023-02-15', NULL, 4),
+('Aiden', 'Diaz', '1981-04-15', 'Male', '9876543264', '9876543265', '68 Pine St, Vasco, Goa', '2023-03-10', '2023-04-01', 4),
+('Olivia', 'Wong', '1993-11-05', 'Female', '9876543266', '9876543267', '31 Cedar St, Calangute, Goa', '2023-04-02', NULL, 4),
+('Jackson', 'Chen', '1985-02-20', 'Male', '9876543268', '9876543269', '54 Redwood St, Anjuna, Goa', '2023-05-20', '2023-06-01', 4),
+('Aria', 'Patel', '1990-07-30', 'Female', '9876543270', '9876543271', '77 Elm St, Candolim, Goa', '2023-06-10', '2023-07-01', 4),
+('Leo', 'Nguyen', '1986-03-15', 'Male', '9876543272', '9876543273', '13 Birch St, Baga, Goa', '2023-07-05', NULL, 4),
+('Luna', 'Gupta', '1997-01-22', 'Female', '9876543274', '9876543275', '89 Walnut St, Arpora, Goa', '2023-08-02', NULL, 4),
+('Milo', 'Kim', '1984-12-07', 'Male', '9876543276', '9876543277', '50 Sequoia St, Saligao, Goa', '2023-09-01', '2023-10-01', 4),
+('Ava', 'Choudhury', '1992-03-14', 'Female', '9876543278', '9876543279', '73 Maple St, Porvorim, Goa', '2023-10-01', '2023-11-01', 4);
+
+
+-- Persons for ShelterID = 5 (Samaritan House) (10 in number)
+
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Aria', 'Patel', '1988-05-10', 'Female', '9876543280', '9876543281', '22 Oak St, Connaught Place, Delhi', '2023-01-01', '2023-02-01', 5),
+('Eli', 'Singh', '1996-09-25', 'Male', '9876543282', '9876543283', '45 Maple St, Karol Bagh, Delhi', '2023-02-15', NULL, 5),
+('Luna', 'Verma', '1981-04-15', 'Female', '9876543284', '9876543285', '68 Pine St, Greater Kailash, Delhi', '2023-03-10', '2023-04-01', 5),
+('Milo', 'Gupta', '1993-11-05', 'Male', '9876543286', '9876543287', '31 Cedar St, Chanakyapuri, Delhi', '2023-04-02', NULL, 5),
+('Ava', 'Kumar', '1985-02-20', 'Female', '9876543288', '9876543289', '54 Redwood St, Hauz Khas, Delhi', '2023-05-20', '2023-06-01', 5),
+('Leo', 'Sharma', '1990-07-30', 'Male', '9876543290', '9876543291', '77 Elm St, Vasant Vihar, Delhi', '2023-06-10', '2023-07-01', 5),
+('Stella', 'Das', '1986-03-15', 'Female', '9876543292', '9876543293', '13 Birch St, South Extension, Delhi', '2023-07-05', NULL, 5),
+('Avery', 'Malhotra', '1997-01-22', 'Male', '9876543294', '9876543295', '89 Walnut St, Lajpat Nagar, Delhi', '2023-08-02', NULL, 5),
+('Lucas', 'Chopra', '1984-12-07', 'Male', '9876543296', '9876543297', '50 Sequoia St, Saket, Delhi', '2023-09-01', '2023-10-01', 5),
+('Isabella', 'Srivastava', '1992-03-14', 'Female', '9876543298', '9876543299', '73 Maple St, Dwarka, Delhi', '2023-10-01', '2023-11-01', 5);
+
+
+-- Persons for ShelterID = 6 (Tranquil Living) (10 in number)
+
+
+INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+VALUES 
+('Ethan', 'Sharma', '1988-05-10', 'Male', '9876543300', '9876543301', '22 Maple St, Malviya Nagar, Jaipur', '2023-01-01', '2023-02-01', 6),
+('Sophia', 'Verma', '1996-09-25', 'Female', '9876543302', '9876543303', '45 Oak St, Vaishali Nagar, Jaipur', '2023-02-15', NULL, 6),
+('Aiden', 'Singh', '1981-04-15', 'Male', '9876543304', '9876543305', '68 Pine St, C-Scheme, Jaipur', '2023-03-10', '2023-04-01', 6),
+('Olivia', 'Kumar', '1993-11-05', 'Female', '9876543306', '9876543307', '31 Cedar St, Mansarovar, Jaipur', '2023-04-02', NULL, 6),
+('Jackson', 'Verma', '1985-02-20', 'Male', '9876543308', '9876543309', '54 Redwood St, Raja Park, Jaipur', '2023-05-20', '2023-06-01', 6),
+('Aria', 'Sharma', '1990-07-30', 'Female', '9876543310', '9876543311', '77 Elm St, Malpura, Jaipur', '2023-06-10', '2023-07-01', 6),
+('Leo', 'Singh', '1986-03-15', 'Male', '9876543312', '9876543313', '13 Birch St, Jagatpura, Jaipur', '2023-07-05', NULL, 6),
+('Luna', 'Patel', '1997-01-22', 'Female', '9876543314', '9876543315', '89 Walnut St, Sanganer, Jaipur', '2023-08-02', NULL, 6),
+('Milo', 'Mehta', '1984-12-07', 'Male', '9876543316', '9876543317', '50 Sequoia St, Amer, Jaipur', '2023-09-01', '2023-10-01', 6),
+('Ava', 'Sharma', '1992-03-14', 'Female', '9876543318', '9876543319', '73 Maple St, Sitapura, Jaipur', '2023-10-01', '2023-11-01', 6);
+
+
