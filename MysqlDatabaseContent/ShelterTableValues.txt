@@ -2,11 +2,11 @@
 
 INSERT INTO Shelter (ShelterID, ShelterName, Location, Capacity, ContactInformation, Status, LastUpdated, RegistrationDate, ShelterType)
 VALUES
-(1, 'Harmony Shelter', 'Alappuzha', 100, '9876543210', 'Available', CURRENT_TIMESTAMP, '2023-01-01', 'Temporary'),
+(1, 'Harmony Shelter', 'Alappuzha', 40, '9876543210', 'Available', CURRENT_TIMESTAMP, '2023-01-01', 'Temporary'),
 (2, 'Peaceful Haven', 'Ernakulam', 15, '9876543211', 'At Capacity', CURRENT_TIMESTAMP, '2023-01-02', 'Emergency'),
-(3, 'Caring Home', 'Ernakulam', 20, '9876543212', 'Nearing Capacity', CURRENT_TIMESTAMP, '2023-01-03', 'Long Term'),
-(4, 'Serene Shelter', 'Thrissur', 80, '9876543213', 'Available', CURRENT_TIMESTAMP, '2023-01-04', 'Temporary'),
-(5, 'Samaritan House', 'Alappuzha', 25, '9876543214', 'Nearing Capacity', CURRENT_TIMESTAMP, '2023-01-05', 'Emergency'),
-(6, 'Tranquil Living', 'Thrissur', 20, '9876543215', 'At Capacity', CURRENT_TIMESTAMP, '2023-01-06', 'Long Term');
+(3, 'Caring Home', 'Ernakulam', 10, '9876543212', 'Nearing Capacity', CURRENT_TIMESTAMP, '2023-01-03', 'Long Term'),
+(4, 'Serene Shelter', 'Thrissur', 30, '9876543213', 'Available', CURRENT_TIMESTAMP, '2023-01-04', 'Temporary'),
+(5, 'Samaritan House', 'Alappuzha', 15, '9876543214', 'Nearing Capacity', CURRENT_TIMESTAMP, '2023-01-05', 'Emergency'),
+(6, 'Tranquil Living', 'Thrissur', 10, '9876543215', 'At Capacity', CURRENT_TIMESTAMP, '2023-01-06', 'Long Term');
 
 
