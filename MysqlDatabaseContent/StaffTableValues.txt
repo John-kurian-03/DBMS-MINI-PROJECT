@@ -1,101 +1,102 @@
-~~~ Staff Table Values
+
 
 -- Staff for Harmony Shelter (ShelterID = 1)
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Arun', 'Kumar', '1990-03-15', 'Male', '9876543210', 'Rousington House, St Judas Street, Alappuzha', 35000.00, 'Nurse', '2023-01-01', 'Day', 1),
-('Priya', 'Menon', '1985-07-22', 'Female', '9876543211', 'Lake View Apartments, MG Road, Alappuzha', 30000.00, 'Cook', '2023-01-02', 'Night', 1),
-('Rajesh', 'Nair', '1988-12-10', 'Male', '9876543212', 'Green Park Residency, Beach Road, Alappuzha', 40000.00, 'Security Guard', '2023-01-03', 'Day', 1),
-('Divya', 'Soman', '1992-05-08', 'Female', '9876543213', 'Blue Waters, Punnamada, Alappuzha', 32000.00, 'Cleaner', '2023-01-04', 'Night', 1),
-('Sunil', 'Pillai', '1987-09-18', 'Male', '9876543214', 'Lighthouse Lane, Alleppey, Alappuzha', 38000.00, 'Counselor', '2023-01-05', 'Day', 1),
-('Meera', 'Prasad', '1991-02-25', 'Female', '9876543215', 'Harbour View Apartments, Alappuzha', 35000.00, 'Janitor', '2023-01-06', 'Night', 1),
-('Anand', 'Nambiar', '1989-06-14', 'Male', '9876543216', 'Dolphin Tower, Alappuzha', 42000.00, 'Administrator', '2023-01-07', 'Day', 1),
-('Lakshmi', 'Menon', '1986-11-30', 'Female', '9876543217', 'Palm Grove, Alappuzha', 33000.00, 'Cook', '2023-01-08', 'Night', 1),
-('Prakash', 'Raj', '1993-04-05', 'Male', '9876543218', 'Kuttanadu Residency, Alappuzha', 39000.00, 'Security Guard', '2023-01-09', 'Day', 1),
-('Sneha', 'Kumar', '1994-08-20', 'Female', '9876543219', 'Golden Sands, Alappuzha', 36000.00, 'Cleaner', '2023-01-10', 'Night', 1);
+('Arun', 'Kumar', '1990-03-15', 'Male', '9876543210', 'Rousington House, St Judas Street, Alappuzha', 'Nurse', '2023-01-01', 'Day', 1),
+('Priya', 'Menon', '1985-07-22', 'Female', '9876543211', 'Lake View Apartments, MG Road, Alappuzha', 'Cook', '2023-01-02', 'Night', 1),
+('Rajesh', 'Nair', '1988-12-10', 'Male', '9876543212', 'Green Park Residency, Beach Road, Alappuzha', 'Security Guard', '2023-01-03', 'Day', 1),
+('Divya', 'Soman', '1992-05-08', 'Female', '9876543213', 'Blue Waters, Punnamada, Alappuzha', 'Cleaner', '2023-01-04', 'Night', 1),
+('Sunil', 'Pillai', '1987-09-18', 'Male', '9876543214', 'Lighthouse Lane, Alleppey, Alappuzha', 'Counselor', '2023-01-05', 'Day', 1),
+('Meera', 'Prasad', '1991-02-25', 'Female', '9876543215', 'Harbour View Apartments, Alappuzha', 'Janitor', '2023-01-06', 'Night', 1),
+('Anand', 'Nambiar', '1989-06-14', 'Male', '9876543216', 'Dolphin Tower, Alappuzha', 'Administrator', '2023-01-07', 'Day', 1),
+('Lakshmi', 'Menon', '1986-11-30', 'Female', '9876543217', 'Palm Grove, Alappuzha', 'Cook', '2023-01-08', 'Night', 1),
+('Prakash', 'Raj', '1993-04-05', 'Male', '9876543218', 'Kuttanadu Residency, Alappuzha', 'Security Guard', '2023-01-09', 'Day', 1),
+('Sneha', 'Kumar', '1994-08-20', 'Female', '9876543219', 'Golden Sands, Alappuzha', 'Cleaner', '2023-01-10', 'Night', 1);
 
 
 -- Staff for ShelterID = 2 (Peaceful Haven)
 
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Rahul', 'Thomas', '1988-04-12', 'Male', '9876543220', 'Tranquil Towers, MG Road, Ernakulam', 37000.00, 'Nurse', '2023-01-11', 'Day', 2),
-('Ananya', 'Menon', '1986-10-25', 'Female', '9876543221', 'Silent Valley Residency, Banerji Road, Ernakulam', 32000.00, 'Cook', '2023-01-12', 'Night', 2),
-('Vijay', 'Rajendran', '1990-01-18', 'Male', '9876543222', 'Green Woods Apartments, Ernakulam', 42000.00, 'Security Guard', '2023-01-13', 'Day', 2),
-('Sarika', 'Pillai', '1985-07-08', 'Female', '9876543223', 'Pearl Haven, Ernakulam', 34000.00, 'Cleaner', '2023-01-14', 'Night', 2),
-('Karthik', 'Menon', '1989-12-03', 'Male', '9876543224', 'Golden Orchid, Ernakulam', 40000.00, 'Counselor', '2023-01-15', 'Day', 2),
-('Aishwarya', 'Soman', '1992-03-20', 'Female', '9876543225', 'City Heights, Ernakulam', 37000.00, 'Janitor', '2023-01-16', 'Night', 2),
-('Vinod', 'Nambiar', '1987-08-14', 'Male', '9876543226', 'Silver Springs, Ernakulam', 43000.00, 'Administrator', '2023-01-17', 'Day', 2),
-('Pooja', 'Raj', '1986-01-30', 'Female', '9876543227', 'Marine Drive Residency, Ernakulam', 35000.00, 'Cook', '2023-01-18', 'Night', 2),
-('Rakesh', 'Kumar', '1994-05-15', 'Male', '9876543228', 'River View Apartments, Ernakulam', 41000.00, 'Security Guard', '2023-01-19', 'Day', 2),
-('Nisha', 'Suresh', '1991-09-28', 'Female', '9876543229', 'Harmony House, Ernakulam', 38000.00, 'Cleaner', '2023-01-20', 'Night', 2);
+('Rahul', 'Thomas', '1988-04-12', 'Male', '9876543220', 'Tranquil Towers, MG Road, Ernakulam', 'Nurse', '2023-01-11', 'Day', 2),
+('Ananya', 'Menon', '1986-10-25', 'Female', '9876543221', 'Silent Valley Residency, Banerji Road, Ernakulam', 'Cook', '2023-01-12', 'Night', 2),
+('Vijay', 'Rajendran', '1990-01-18', 'Male', '9876543222', 'Green Woods Apartments, Ernakulam', 'Security Guard', '2023-01-13', 'Day', 2),
+('Sarika', 'Pillai', '1985-07-08', 'Female', '9876543223', 'Pearl Haven, Ernakulam', 'Cleaner', '2023-01-14', 'Night', 2),
+('Karthik', 'Menon', '1989-12-03', 'Male', '9876543224', 'Golden Orchid, Ernakulam', 'Counselor', '2023-01-15', 'Day', 2),
+('Aishwarya', 'Soman', '1992-03-20', 'Female', '9876543225', 'City Heights, Ernakulam', 'Janitor', '2023-01-16', 'Night', 2),
+('Vinod', 'Nambiar', '1987-08-14', 'Male', '9876543226', 'Silver Springs, Ernakulam', 'Administrator', '2023-01-17', 'Day', 2),
+('Pooja', 'Raj', '1986-01-30', 'Female', '9876543227', 'Marine Drive Residency, Ernakulam', 'Cook', '2023-01-18', 'Night', 2),
+('Rakesh', 'Kumar', '1994-05-15', 'Male', '9876543228', 'River View Apartments, Ernakulam', 'Security Guard', '2023-01-19', 'Day', 2),
+('Nisha', 'Suresh', '1991-09-28', 'Female', '9876543229', 'Harmony House, Ernakulam', 'Cleaner', '2023-01-20', 'Night', 2);
 
 
 -- Staff for ShelterID = 3 (Caring Home)
 
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Vivek', 'Patel', '1988-06-15', 'Male', '9876543250', 'Rosewood Apartments, Mumbai', 36000.00, 'Nurse', '2023-02-10', 'Day', 3),
-('Aisha', 'Malhotra', '1986-11-28', 'Female', '9876543251', 'Green Valley Residency, Delhi', 31000.00, 'Cook', '2023-02-11', 'Night', 3),
-('Rajiv', 'Kumar', '1990-04-20', 'Male', '9876543252', 'Palm Grove, Bangalore', 41000.00, 'Security Guard', '2023-02-12', 'Day', 3),
-('Anjali', 'Mukherjee', '1987-09-10', 'Female', '9876543253', 'Sapphire Towers, Kolkata', 33000.00, 'Cleaner', '2023-02-13', 'Night', 3),
-('Arun', 'Choudhury', '1991-02-25', 'Male', '9876543254', 'Pearl Haven, Hyderabad', 39000.00, 'Counselor', '2023-02-14', 'Day', 3),
-('Maya', 'Nair', '1986-07-22', 'Female', '9876543255', 'City Lights, Pune', 36000.00, 'Janitor', '2023-02-15', 'Night', 3),
-('Peter', 'Fernandez', '1989-12-14', 'Male', '9876543256', 'Highland Homes, Goa', 43000.00, 'Administrator', '2023-02-16', 'Day', 3),
-('Olivia', 'Thomas', '1985-03-30', 'Female', '9876543257', 'Blue Waters, Chennai', 34000.00, 'Cook', '2023-02-17', 'Night', 3),
-('Ravi', 'Singh', '1993-08-15', 'Male', '9876543258', 'Misty Meadows, Ahmedabad', 40000.00, 'Security Guard', '2023-02-18', 'Day', 3),
-('Lily', 'Sharma', '1994-01-28', 'Female', '9876543259', 'Rosewood Apartments, Jaipur', 37000.00, 'Cleaner', '2023-02-19', 'Night', 3);
+('Vivek', 'Patel', '1988-06-15', 'Male', '9876543250', 'Rosewood Apartments, Mumbai', 'Nurse', '2023-02-10', 'Day', 3),
+('Aisha', 'Malhotra', '1986-11-28', 'Female', '9876543251', 'Green Valley Residency, Delhi', 'Cook', '2023-02-11', 'Night', 3),
+('Rajiv', 'Kumar', '1990-04-20', 'Male', '9876543252', 'Palm Grove, Bangalore', 'Security Guard', '2023-02-12', 'Day', 3),
+('Anjali', 'Mukherjee', '1987-09-10', 'Female', '9876543253', 'Sapphire Towers, Kolkata', 'Cleaner', '2023-02-13', 'Night', 3),
+('Arun', 'Choudhury', '1991-02-25', 'Male', '9876543254', 'Pearl Haven, Hyderabad', 'Counselor', '2023-02-14', 'Day', 3),
+('Maya', 'Nair', '1986-07-22', 'Female', '9876543255', 'City Lights, Pune', 'Janitor', '2023-02-15', 'Night', 3),
+('Peter', 'Fernandez', '1989-12-14', 'Male', '9876543256', 'Highland Homes, Goa', 'Administrator', '2023-02-16', 'Day', 3),
+('Olivia', 'Thomas', '1985-03-30', 'Female', '9876543257', 'Blue Waters, Chennai', 'Cook', '2023-02-17', 'Night', 3),
+('Ravi', 'Singh', '1993-08-15', 'Male', '9876543258', 'Misty Meadows, Ahmedabad', 'Security Guard', '2023-02-18', 'Day', 3),
+('Lily', 'Sharma', '1994-01-28', 'Female', '9876543259', 'Rosewood Apartments, Jaipur', 'Cleaner', '2023-02-19', 'Night', 3);
 
 
 -- Staff for ShelterID = 4 (Serene Shelter)
 
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Raj', 'Kapoor', '1990-05-10', 'Male', '9876543260', 'Mountain View Apartments, Shimla', 37000.00, 'Nurse', '2023-02-20', 'Day', 4),
-('Sophia', 'Malik', '1988-10-25', 'Female', '9876543261', 'Sunset View Residency, Srinagar', 32000.00, 'Cook', '2023-02-21', 'Night', 4),
-('Kumar', 'Singh', '1992-03-18', 'Male', '9876543262', 'Green Park Homes, Jammu', 42000.00, 'Security Guard', '2023-02-22', 'Day', 4),
-('Anita', 'Khan', '1987-08-08', 'Female', '9876543263', 'Golden Grove Apartments, Amritsar', 34000.00, 'Cleaner', '2023-02-23', 'Night', 4),
-('Vikrant', 'Chopra', '1991-12-03', 'Male', '9876543264', 'Highland Residency, Chandigarh', 40000.00, 'Counselor', '2023-02-24', 'Day', 4),
-('Ritu', 'Thakur', '1994-03-20', 'Female', '9876543265', 'City Lights, Dehradun', 37000.00, 'Janitor', '2023-02-25', 'Night', 4),
-('David', 'Fernandes', '1989-08-14', 'Male', '9876543266', 'Silver Sands, Panaji', 43000.00, 'Administrator', '2023-02-26', 'Day', 4),
-('Emily', 'Mohan', '1986-01-30', 'Female', '9876543267', 'Marine Drive Residency, Kochi', 35000.00, 'Cook', '2023-02-27', 'Night', 4),
-('Alex', 'Joseph', '1993-05-15', 'Male', '9876543268', 'Riverfront Apartments, Thiruvananthapuram', 41000.00, 'Security Guard', '2023-02-28', 'Day', 4),
-('Mia', 'George', '1992-09-28', 'Female', '9876543269', 'Harmony House, Kottayam', 38000.00, 'Cleaner', '2023-03-01', 'Night', 4);
+('Raj', 'Kapoor', '1990-05-10', 'Male', '9876543260', 'Mountain View Apartments, Shimla', 'Nurse', '2023-02-20', 'Day', 4),
+('Sophia', 'Malik', '1988-10-25', 'Female', '9876543261', 'Sunset View Residency, Srinagar', 'Cook', '2023-02-21', 'Night', 4),
+('Kumar', 'Singh', '1992-03-18', 'Male', '9876543262', 'Green Park Homes, Jammu', 'Security Guard', '2023-02-22', 'Day', 4),
+('Anita', 'Khan', '1987-08-08', 'Female', '9876543263', 'Golden Grove Apartments, Amritsar', 'Cleaner', '2023-02-23', 'Night', 4),
+('Vikrant', 'Chopra', '1991-12-03', 'Male', '9876543264', 'Highland Residency, Chandigarh', 'Counselor', '2023-02-24', 'Day', 4),
+('Ritu', 'Thakur', '1994-03-20', 'Female', '9876543265', 'City Lights, Dehradun', 'Janitor', '2023-02-25', 'Night', 4),
+('David', 'Fernandes', '1989-08-14', 'Male', '9876543266', 'Silver Sands, Panaji', 'Administrator', '2023-02-26', 'Day', 4),
+('Emily', 'Mohan', '1986-01-30', 'Female', '9876543267', 'Marine Drive Residency, Kochi', 'Cook', '2023-02-27', 'Night', 4),
+('Alex', 'Joseph', '1993-05-15', 'Male', '9876543268', 'Riverfront Apartments, Thiruvananthapuram', 'Security Guard', '2023-02-28', 'Day', 4),
+('Mia', 'George', '1992-09-28', 'Female', '9876543269', 'Harmony House, Kottayam', 'Cleaner', '2023-03-01', 'Night', 4);
 
 
 -- Staff for ShelterID = 5 (Samaritan House)
 
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Rahul', 'Sinha', '1988-06-15', 'Male', '9876543270', 'Ocean View Apartments, Mumbai', 36000.00, 'Nurse', '2023-03-02', 'Day', 5),
-('Priya', 'Iyer', '1986-11-28', 'Female', '9876543271', 'Sunset Residency, Pune', 31000.00, 'Cook', '2023-03-03', 'Night', 5),
-('Alok', 'Mehta', '1990-04-20', 'Male', '9876543272', 'Green Meadows, Nagpur', 41000.00, 'Security Guard', '2023-03-04', 'Day', 5),
-('Ananya', 'Rao', '1987-09-10', 'Female', '9876543273', 'Lakeview Towers, Chennai', 33000.00, 'Cleaner', '2023-03-05', 'Night', 5),
-('Rajat', 'Patil', '1991-02-25', 'Male', '9876543274', 'Silver Springs, Hyderabad', 39000.00, 'Counselor', '2023-03-06', 'Day', 5),
-('Arpita', 'Nayar', '1986-07-22', 'Female', '9876543275', 'Golden Orchid, Bangalore', 36000.00, 'Janitor', '2023-03-07', 'Night', 5),
-('Michael', 'George', '1989-12-14', 'Male', '9876543276', 'Highland Residency, Kochi', 43000.00, 'Administrator', '2023-03-08', 'Day', 5),
-('Catherine', 'Thomas', '1985-03-30', 'Female', '9876543277', 'Blue Waters, Kottayam', 34000.00, 'Cook', '2023-03-09', 'Night', 5),
-('Karan', 'Singh', '1993-08-15', 'Male', '9876543278', 'Misty Meadows, Thrissur', 40000.00, 'Security Guard', '2023-03-10', 'Day', 5),
-('Simran', 'Menon', '1994-01-28', 'Female', '9876543279', 'Rosewood Apartments, Ernakulam', 37000.00, 'Cleaner', '2023-03-11', 'Night', 5);
+('Rahul', 'Sinha', '1988-06-15', 'Male', '9876543270', 'Ocean View Apartments, Mumbai', 'Nurse', '2023-03-02', 'Day', 5),
+('Priya', 'Iyer', '1986-11-28', 'Female', '9876543271', 'Sunset Residency, Pune', 'Cook', '2023-03-03', 'Night', 5),
+('Alok', 'Mehta', '1990-04-20', 'Male', '9876543272', 'Green Meadows, Nagpur', 'Security Guard', '2023-03-04', 'Day', 5),
+('Ananya', 'Rao', '1987-09-10', 'Female', '9876543273', 'Lakeview Towers, Chennai', 'Cleaner', '2023-03-05', 'Night', 5),
+('Rajat', 'Patil', '1991-02-25', 'Male', '9876543274', 'Silver Springs, Hyderabad', 'Counselor', '2023-03-06', 'Day', 5),
+('Arpita', 'Nayar', '1986-07-22', 'Female', '9876543275', 'Golden Orchid, Bangalore', 'Janitor', '2023-03-07', 'Night', 5),
+('Michael', 'George', '1989-12-14', 'Male', '9876543276', 'Highland Residency, Kochi', 'Administrator', '2023-03-08', 'Day', 5),
+('Catherine', 'Thomas', '1985-03-30', 'Female', '9876543277', 'Blue Waters, Kottayam', 'Cook', '2023-03-09', 'Night', 5),
+('Karan', 'Singh', '1993-08-15', 'Male', '9876543278', 'Misty Meadows, Thrissur', 'Security Guard', '2023-03-10', 'Day', 5),
+('Simran', 'Menon', '1994-01-28', 'Female', '9876543279', 'Rosewood Apartments, Ernakulam', 'Cleaner', '2023-03-11', 'Night', 5);
 
 
 -- Staff for ShelterID = 6 (Tranquil Living)
 
 
-INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Salary, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
+INSERT INTO Staff (FirstName, LastName, DOB, Gender, ContactInformation, Address, Position, EmploymentStatus, DateOfHire, Shift, ShelterID)
 VALUES
-('Amit', 'Sharma', '1990-05-10', 'Male', '9876543280', 'Skyline Residency, Bangalore', 37000.00, 'Nurse', '2023-03-12', 'Day', 6),
-('Sanya', 'Kapoor', '1988-10-25', 'Female', '9876543281', 'Sunrise Apartments, Chennai', 32000.00, 'Cook', '2023-03-13', 'Night', 6),
-('Rohan', 'Verma', '1992-03-18', 'Male', '9876543282', 'Green Valley Residency, Hyderabad', 42000.00, 'Security Guard', '2023-03-14', 'Day', 6),
-('Sanjana', 'Nair', '1987-08-08', 'Female', '9876543283', 'Pearl Haven, Kochi', 34000.00, 'Cleaner', '2023-03-15', 'Night', 6),
-('Varun', 'Menon', '1991-12-03', 'Male', '9876543284', 'Golden Grove Apartments, Kottayam', 40000.00, 'Counselor', '2023-03-16', 'Day', 6),
-('Meera', 'Sharma', '1994-03-20', 'Female', '9876543285', 'City Lights, Thrissur', 37000.00, 'Janitor', '2023-03-17', 'Night', 6),
-('John', 'Fernandez', '1989-08-14', 'Male', '9876543286', 'Silver Sands, Palakkad', 43000.00, 'Administrator', '2023-03-18', 'Day', 6),
-('Sophie', 'Joseph', '1986-01-30', 'Female', '9876543287', 'Marine Drive Residency, Malappuram', 35000.00, 'Cook', '2023-03-19', 'Night', 6),
-('Aditya', 'Kumar', '1993-05-15', 'Male', '9876543288', 'Riverfront Apartments, Kannur', 41000.00, 'Security Guard', '2023-03-20', 'Day', 6),
-('Kavya', 'Menon', '1992-09-28', 'Female', '9876543289', 'Harmony House, Kasaragod', 38000.00, 'Cleaner', '2023-03-21', 'Night', 6);
+('Amit', 'Sharma', '1990-05-10', 'Male', '9876543280', 'Skyline Residency, Bangalore', 'Nurse', '2023-03-12', 'Day', 6),
+('Sanya', 'Kapoor', '1988-10-25', 'Female', '9876543281', 'Sunrise Apartments, Chennai', 'Cook', '2023-03-13', 'Night', 6),
+('Rohan', 'Verma', '1992-03-18', 'Male', '9876543282', 'Green Valley Residency, Hyderabad', 'Security Guard', '2023-03-14', 'Day', 6),
+('Sanjana', 'Nair', '1987-08-08', 'Female', '9876543283', 'Pearl Haven, Kochi', 'Cleaner', '2023-03-15', 'Night', 6),
+('Varun', 'Menon', '1991-12-03', 'Male', '9876543284', 'Golden Grove Apartments, Kottayam', 'Counselor', '2023-03-16', 'Day', 6),
+('Meera', 'Sharma', '1994-03-20', 'Female', '9876543285', 'City Lights, Thrissur', 'Janitor', '2023-03-17', 'Night', 6),
+('John', 'Fernandez', '1989-08-14', 'Male', '9876543286', 'Silver Sands, Palakkad', 'Administrator', '2023-03-18', 'Day', 6),
+('Sophie', 'Joseph', '1986-01-30', 'Female', '9876543287', 'Marine Drive Residency, Malappuram', 'Cook', '2023-03-19', 'Night', 6),
+('Aditya', 'Kumar', '1993-05-15', 'Male', '9876543288', 'Riverfront Apartments, Kannur', 'Security Guard', '2023-03-20', 'Day', 6),
+('Kavya', 'Menon', '1992-09-28', 'Female', '9876543289', 'Harmony House, Kasaragod', 'Cleaner', '2023-03-21', 'Night', 6);
