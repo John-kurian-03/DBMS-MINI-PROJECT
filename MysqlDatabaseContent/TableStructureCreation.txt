@@ -24,7 +24,6 @@ CREATE TABLE Person (
     Address VARCHAR(50),
     EntryDate DATE,
     ExitDate DATE,
-    ReasonForEntry VARCHAR(50)
     Status ENUM('Active', 'Inactive'),
     ShelterID INT,
     FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
