@@ -17,6 +17,7 @@ CREATE TABLE Person (
     FirstName VARCHAR(25),
     LastName VARCHAR(25),
     DOB DATE,
+    Age INT,
     Gender ENUM('Male', 'Female'),
     ContactInformation VARCHAR(50),
     EmergencyContact VARCHAR(25),
