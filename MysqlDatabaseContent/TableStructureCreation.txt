@@ -52,7 +52,7 @@ CREATE TABLE Inventory (
     ItemID INT AUTO_INCREMENT PRIMARY KEY,
     ItemName VARCHAR(25),
     Category ENUM('Food', 'Clothing', 'Medical', 'Other'),
-	Quantity INT,
+    Quantity INT,
     UnitOfMeasure VARCHAR(25),
     ExpirationDate DATE,
     DateReceived DATE,
