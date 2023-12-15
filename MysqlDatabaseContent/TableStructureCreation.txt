@@ -38,7 +38,7 @@ CREATE TABLE Staff (
     Gender ENUM('Male', 'Female'),
     ContactInformation VARCHAR(50),
     Address VARCHAR(50),
-    Salary DECIMAL(10,2),
+    Salary DECIMAL(10,2) DEFAULT NULL,
     Position VARCHAR(25),
     EmploymentStatus ENUM('Part Time', 'Full Time'),
     DateOfHire DATE,
