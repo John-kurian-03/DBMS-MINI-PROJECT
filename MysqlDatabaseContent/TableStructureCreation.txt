@@ -5,7 +5,7 @@ CREATE TABLE Shelter (
     Location VARCHAR(50),
     Capacity INT,
     ContactInformation VARCHAR(50)
-    Status ENUM('Closed', 'Open', 'At Capacity'),
+    Status ENUM('Available', 'Nearing Capacity', 'At Capacity'),
     LastUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     RegistrationDate DATE,
     ShelterType ENUM('Emergency', 'Temporary', 'Long Term')
@@ -35,7 +35,7 @@ CREATE TABLE Staff (
     FirstName VARCHAR(25),
     LastName VARCHAR(25),
     DOB DATE,
-    Gender ENUM('Male', 'Female', 'Other'),
+    Gender ENUM('Male', 'Female'),
     ContactInformation VARCHAR(50),
     Address VARCHAR(50),
     Salary DECIMAL(10,2),
