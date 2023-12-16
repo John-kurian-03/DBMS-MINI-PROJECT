@@ -58,7 +58,7 @@ CREATE TABLE Inventory (
     DateReceived DATE,
     Condition ENUM('New', 'Used', 'Expired'),
     CostPerUnit DECIMAL(10,2),
-    AvailabilityStatus ENUM(1, 2, 3, 4, 5),
+    AvailabilityStatus ENUM('1', '2', '3', '4', '5'),
     ShelterID INT,
     FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
 );
