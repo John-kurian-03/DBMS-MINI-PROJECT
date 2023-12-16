@@ -3,7 +3,7 @@
 
 
 CREATE TRIGGER SetDefaultSalary
-AFTER INSERT ON Staff
+BEFORE INSERT ON Staff
 FOR EACH ROW
 SET NEW.Salary = CASE 
     WHEN NEW.Position = 'Administrator' THEN 60000.00
