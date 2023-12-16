@@ -1,0 +1,23 @@
+-- trigger to set condition of inventory
+-- needs to be executed before you insert values
+
+
+CREATE TRIGGER SetCondition
+BEFORE INSERT ON Inventory
+FOR EACH ROW
+BEGIN
+    DECLARE currentDate DATE;
+    
+    -- Get the current date
+    SET currentDate = CURDATE();
+    
+    -- Set the Condition based on the specified logic
+    IF NEW.DateReceived >= currentDate - INTERVAL 14 DAY THEN
+        SET NEW.Condition = 'New';
+    ELSEIF NEW.DateReceived < currentDate - INTERVAL 14 DAY AND NEW.ExpirationDate > currentDate THEN
+        SET NEW.Condition = 'Used';
+    ELSE
+        SET NEW.Condition = 'Expired';
+    END IF;
+END 
+
