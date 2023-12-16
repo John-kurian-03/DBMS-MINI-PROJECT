@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crisis Shelter Management</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+
+        header {
+            background-color: #333;
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+        }
+
+        nav {
+            background-color: #333;
+            color: white;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px 20px;
+        }
+
+        nav a {
+            color: white;
+            text-decoration: none;
+            padding: 10px 15px;
+        }
+
+        .dropdown {
+            position: relative;
+            display: inline-block;
+            margin-right: 20px;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: #333;
+            min-width: 120px;
+            z-index: 1;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .dropdown-content a {
+            color: white;
+            text-decoration: none;
+            display: block;
+            padding: 10px;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+        }
+
+        .admin-login {
+            order: 2; /* Align right */
+        }
+
+        .location-dropdown {
+            order: 1; /* Align left */
+        }
+
+        /* Styling for the main content */
+        .main-content {
+            padding: 20px;
+            text-align: center;
+        }
+
+        /* Example style for a card container */
+        .card {
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            padding: 20px;
+            margin-bottom: 20px;
+        }
+
+        /* Example style for headings */
+        h2 {
+            color: #333;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Crisis Shelter Management</h1>
+    <p>A platform providing support and shelter to individuals facing crises.</p>
+</header>
+
+<nav>
+    <div class="dropdown location-dropdown">
+        <a class="location-button" href="#" onclick="showContent('ALAPUZHA')">Location &#9662;</a>
+        <div class="dropdown-content">
+            <a href="#" onclick="showContent('ALAPUZHA')">ALAPUZHA</a>
+            <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
+            <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
+            <a href="#" onclick="showContent('KOTTAYAM')">KOTTAYAM</a>
+        </div>
+    </div>
+    <a href="login.html" class="admin-login">Admin Login</a> <!-- Link to login.html -->
+</nav>
+
+<!-- Main content section -->
+<div class="main-content" id="contentContainer">
+    <!-- Content for the selected location will be displayed here -->
+</div>
+
+<script>
+    function showContent(location) {
+        var contentContainer = document.getElementById('contentContainer');
+        // You can customize the content based on the selected location
+        if (location === 'ALAPUZHA') {
+            contentContainer.innerHTML = `
+                <div class="card">
+                    <h2>Shelter 1 in ALAPUZHA</h2>
+                    <p>Location: ALAPUZHA</p>
+                    <p>Capacity: 50</p>
+                    <p>Contact: 123-456-7890</p>
+                </div>
+                <div class="card">
+                    <h2>Shelter 2 in ALAPUZHA</h2>
+                    <p>Location: ALAPUZHA</p>
+                    <p>Capacity: 40</p>
+                    <p>Contact: 987-654-3210</p>
+                </div>
+            `;
+        } else if (location === 'ERNAKULAM') {
+            // Add similar blocks for ERNAKULAM
+            contentContainer.innerHTML = `
+                <div class="card">
+                    <h2>Shelter 1 in ERNAKULAM</h2>
+                    <p>Location: ERNAKULAM</p>
+                    <p>Capacity: 60</p>
+                    <p>Contact: 555-123-4567</p>
+                    <p>Status: Available</p>
+                </div>
+                <div class="card">
+                    <h2>Shelter 2 in ERNAKULAM</h2>
+                    <p>Location: ERNAKULAM</p>
+                    <p>Capacity: 45</p>
+                    <p>Contact: 222-333-4444</p>
+                    <p>Status: Available</p>
+                </div>
+            `;
+        } else if (location === 'THRISSUR') {
+            // Add similar blocks for THRISSUR
+            contentContainer.innerHTML = `
+                <div class="card">
+                    <h2>Shelter 1 in THRISSUR</h2>
+                    <p>Location: THRISSUR</p>
+                    <p>Capacity: 55</p>
+                    <p>Contact: 999-888-7777</p>
+                    <p>Status: Available</P>
+                </div>
+                <div class="card">
+                    <h2>Shelter 2 in THRISSUR</h2>
+                    <p>Location: THRISSUR</p>
+                    <p>Capacity: 35</p>
+                    <p>Contact: 777-888-9999</p>
+                    <p>Status: Available</P>
+                </div>
+            `;
+        } else if (location === 'KOTTAYAM') {
+            // Add similar blocks for KOTTAYAM
+            contentContainer.innerHTML = `
+                <div class="card">
+                    <h2>Shelter 1 in KOTTAYAM</h2>
+                    <p>Location: KOTTAYAM</p>
+                    <p>Capacity: 30</p>
+                    <p>Contact: 111-222-3333</p>
+                    <p>Status: Available</P>
+                    
+                </div>
+                <div class="card">
+                    <h2>Shelter 2 in KOTTAYAM</h2>
+                    <p>Location: KOTTAYAM</p>
+                    <p>Capacity: 25</p>
+                    <p>Contact: 444-555-6666</p>
+                    <p>Status: Available</P>
+                </div>
+            `;
+        }
+    }
+</script>
+
+</body>
+</html>
