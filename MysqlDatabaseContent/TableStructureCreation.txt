@@ -56,7 +56,7 @@ CREATE TABLE Inventory (
     UnitOfMeasure VARCHAR(25),
     ExpirationDate DATE,
     DateReceived DATE,
-    Condition ENUM('New', 'Used', 'Expired'),
+    Conditions ENUM('New', 'Used', 'Expired'),
     CostPerUnit DECIMAL(10,2),
     AvailabilityStatus ENUM('1', '2', '3', '4', '5'),
     ShelterID INT,
