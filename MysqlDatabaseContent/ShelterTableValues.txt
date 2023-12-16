@@ -1,4 +1,4 @@
-~~~ Shelter Table Values
+--- Shelter Table Values
 
 INSERT INTO Shelter (ShelterID, ShelterName, Location, Capacity, ContactInformation, Status, LastUpdated, RegistrationDate, ShelterType)
 VALUES
