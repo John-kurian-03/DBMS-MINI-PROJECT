@@ -4,7 +4,7 @@ CREATE TABLE Shelter (
     ShelterName VARCHAR(50),
     Location VARCHAR(50),
     Capacity INT,
-    ContactInformation VARCHAR(50)
+    ContactInformation VARCHAR(50),
     Status ENUM('Available', 'Nearing Capacity', 'At Capacity'),
     LastUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
     RegistrationDate DATE,
