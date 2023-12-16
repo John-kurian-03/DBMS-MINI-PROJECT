@@ -1,7 +1,7 @@
 -- Trigger to set default salary based on position
 -- This needs to be executed before you insert values into the staff table
 
-
+DELIMITER //
 CREATE TRIGGER SetDefaultSalary
 BEFORE INSERT ON Staff
 FOR EACH ROW
@@ -14,4 +14,5 @@ SET NEW.Salary = CASE
 	WHEN NEW.Position = 'Cook' THEN 30000.00
 	WHEN NEW.Position = 'Security Guard' THEN 25000.00
     ELSE NULL
-END;
+END; //
+DELIMITER ;
