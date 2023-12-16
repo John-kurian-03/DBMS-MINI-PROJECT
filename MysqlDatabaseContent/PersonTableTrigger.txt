@@ -1,6 +1,7 @@
 -- trigger to set the status of a person in person table
 -- to be executed before inserting values into the person table
 
+DELIMITER //
 CREATE TRIGGER update_person_status
 BEFORE INSERT ON Person
 FOR EACH ROW
@@ -10,14 +11,18 @@ BEGIN
     ELSE
         SET NEW.Status = 'Active';
     END IF;
-END;
+END; //
+DELIMITER ;
+
 
 -- trigger to set the age of a person
 -- (RIGHT(CURDATE(), 5) < RIGHT(NEW.DOB, 5) used to check if the bday has occurred or not in order to minus 1 or 0.
 
+DELIMITER //
 CREATE TRIGGER calculate_age
 BEFORE INSERT ON Person
 FOR EACH ROW
 BEGIN
     SET NEW.Age = YEAR(CURDATE()) - YEAR(NEW.DOB) - (RIGHT(CURDATE(), 5) < RIGHT(NEW.DOB, 5));
-END;
+END; //
+DELIMITER ;
