@@ -76,3 +76,20 @@ VALUES
 ('Tarps', 'Other', 10, 'pcs', '2024-03-05', '2023-11-15', 5.50, 3, 5),
 ('Ramen Noodles', 'Food', 60, 'packs', '2024-03-22', '2023-11-10', 1.75, 4, 5),
 ('Winter Gloves', 'Clothing', 25, 'pairs', '2024-05-05', '2023-11-28', 8.99, 5, 5);
+
+
+-- ShelterID = 6
+
+INSERT INTO Inventory (ItemName, Category, Quantity, UnitOfMeasure, ExpirationDate, DateReceived, CostPerUnit, AvailabilityStatus, ShelterID)
+VALUES
+('Instant Coffee', 'Food', 85, 'jars', '2024-03-10', '2023-12-01', 4.99, 1, 6),
+('Sunglasses', 'Clothing', 40, 'pcs', '2024-04-15', '2023-11-25', 8.49, 2, 6),
+('Allergy Medication', 'Medical', 20, 'bottles', '2024-02-20', '2023-11-15', 12.75, 3, 6),
+('Tent Pegs', 'Other', 15, 'pcs', '2024-04-10', '2023-11-10', 2.50, 4, 6),
+('Canned Tuna', 'Food', 70, 'cans', '2024-03-15', '2023-11-20', 2.25, 5, 6),
+('Sandals', 'Clothing', 35, 'pairs', '2024-04-28', '2023-11-30', 14.99, 1, 6),
+('Pain Relief Cream', 'Medical', 15, 'tubes', '2024-02-22', '2023-11-25', 8.75, 2, 6),
+('Picnic Blanket', 'Other', 12, 'pcs', '2024-03-05', '2023-11-15', 12.50, 3, 6),
+('Canned Peaches', 'Food', 50, 'cans', '2024-03-22', '2023-11-10', 1.99, 4, 6),
+('Flip-flops', 'Clothing', 25, 'pairs', '2024-05-05', '2023-11-28', 6.99, 5, 6);
+
