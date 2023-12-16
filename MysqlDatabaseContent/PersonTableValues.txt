@@ -4,7 +4,7 @@
 -- Persons for Harmony Shelter (ShelterID = 1) (16 in number)
 
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Alex', 'Anderson', '1985-06-20', 'Male', '8765432101', '9876543210', '42 Rose St, Jude Street, Ernakulam', '2023-01-01', '2023-02-15', 1),
 ('Sophia', 'Smith', '1993-09-15', 'Female', '8765432102', '9876543211', '28 Lily St, Gandhi Nagar, Thiruvananthapuram', '2023-01-02', NULL, 1),
@@ -27,7 +27,7 @@ VALUES
 -- Persons for ShelterID = 2 (Peaceful Haven) (15 in number - Max Capacity)
 
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Liam', 'Gupta', '1988-07-12', 'Male', '9876543210', '9876543211', '56 Rose St, Jude Street, Malad', '2023-01-01', '2023-02-15', 2),
 ('Olivia', 'Patel', '1996-02-25', 'Female', '9876543212', '9876543213', '78 Lily St, Andheri', '2023-02-15', NULL, 2),
@@ -49,7 +49,7 @@ VALUES
 -- Persons for ShelterID = 3 (Caring Home) (8 in number)
 
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Aria', 'Kumar', '1988-05-10', 'Female', '9876543240', '9876543241', '22 Maple St, Aundh, Pune', '2023-01-01', '2023-02-01', 3),
 ('Eli', 'Sharma', '1996-09-25', 'Male', '9876543242', '9876543243', '45 Oak St, Baner, Pune', '2023-02-15', NULL, 3),
@@ -63,7 +63,7 @@ VALUES
 
 -- Persons for ShelterID = 4 (Serene Shelter) (10 in number)
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Ethan', 'Martins', '1988-05-10', 'Male', '9876543260', '9876543261', '22 Maple St, Panjim, Goa', '2023-01-01', '2023-02-01', 4),
 ('Sophia', 'Fisher', '1996-09-25', 'Female', '9876543262', '9876543263', '45 Oak St, Margao, Goa', '2023-02-15', NULL, 4),
@@ -80,7 +80,7 @@ VALUES
 -- Persons for ShelterID = 5 (Samaritan House) (10 in number)
 
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Aria', 'Patel', '1988-05-10', 'Female', '9876543280', '9876543281', '22 Oak St, Connaught Place, Delhi', '2023-01-01', '2023-02-01', 5),
 ('Eli', 'Singh', '1996-09-25', 'Male', '9876543282', '9876543283', '45 Maple St, Karol Bagh, Delhi', '2023-02-15', NULL, 5),
@@ -97,7 +97,7 @@ VALUES
 -- Persons for ShelterID = 6 (Tranquil Living) (10 in number)
 
 
-INSERT INTO Person (FirstName,LastName,DOB,ContactInformation,Address,ExitDate,ShelterID) 
+INSERT INTO Person (FirstName,LastName,DOB,Gender,ContactInformation,EmergencyContact,Address,EntryDate,ExitDate,ShelterID) 
 VALUES 
 ('Ethan', 'Sharma', '1988-05-10', 'Male', '9876543300', '9876543301', '22 Maple St, Malviya Nagar, Jaipur', '2023-01-01', '2023-02-01', 6),
 ('Sophia', 'Verma', '1996-09-25', 'Female', '9876543302', '9876543303', '45 Oak St, Vaishali Nagar, Jaipur', '2023-02-15', NULL, 6),
