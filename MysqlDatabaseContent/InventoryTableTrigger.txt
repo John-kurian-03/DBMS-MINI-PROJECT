@@ -13,11 +13,11 @@ BEGIN
     
     -- Set the Condition based on the specified logic
     IF NEW.DateReceived >= currentDate - INTERVAL 14 DAY THEN
-        SET NEW.Condition = 'New';
+        SET NEW.Conditions = 'New';
     ELSEIF NEW.DateReceived < currentDate - INTERVAL 14 DAY AND NEW.ExpirationDate > currentDate THEN
-        SET NEW.Condition = 'Used';
+        SET NEW.Conditions = 'Used';
     ELSE
-        SET NEW.Condition = 'Expired';
+        SET NEW.Conditions = 'Expired';
     END IF;
 END; //
 DELIMITER ;
