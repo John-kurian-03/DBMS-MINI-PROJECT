@@ -1,7 +1,7 @@
 -- trigger to set condition of inventory
 -- needs to be executed before you insert values
 
-
+DELIMITER //
 CREATE TRIGGER SetCondition
 BEFORE INSERT ON Inventory
 FOR EACH ROW
@@ -19,5 +19,6 @@ BEGIN
     ELSE
         SET NEW.Condition = 'Expired';
     END IF;
-END 
+END; //
+DELIMITER ;
 
