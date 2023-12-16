@@ -1,4 +1,4 @@
-~~~ Person Table Values   (First 2 Shelter have a good amount of person Rest are lessened for simplicity)
+--- Person Table Values   (First 2 Shelter have a good amount of person Rest are lessened for simplicity)
 
 
 -- Persons for Harmony Shelter (ShelterID = 1) (16 in number)
