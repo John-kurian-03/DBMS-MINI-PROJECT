@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -62,11 +63,13 @@
         }
 
         .admin-login {
-            order: 2; /* Align right */
+            order: 2;
+            /* Align right */
         }
 
         .location-dropdown {
-            order: 1; /* Align left */
+            order: 1;
+            /* Align left */
         }
 
         /* Styling for the main content */
@@ -91,108 +94,86 @@
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Crisis Shelter Management</h1>
-    <p>A platform providing support and shelter to individuals facing crises.</p>
-</header>
+    <header>
+        <h1>Crisis Shelter Management</h1>
+        <p>A platform providing support and shelter to individuals facing crises.</p>
+    </header>
 
-<nav>
-    <div class="dropdown location-dropdown">
-        <a class="location-button" href="#" onclick="showContent('ALAPUZHA')">Location &#9662;</a>
-        <div class="dropdown-content">
-            <a href="#" onclick="showContent('ALAPUZHA')">ALAPUZHA</a>
-            <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
-            <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
-            <a href="#" onclick="showContent('KOTTAYAM')">KOTTAYAM</a>
+    <nav>
+        <div class="dropdown location-dropdown">
+            <a class="location-button" href="#" onclick="showContent('ALAPUZHA')">Location &#9662;</a>
+            <div class="dropdown-content">
+                <a href="#" onclick="showContent('ALAPUZHA')">ALAPUZHA</a>
+                <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
+                <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
+            </div>
         </div>
+        <a href="/login" class="admin-login">Admin Login</a> <!-- Link to login.html -->
+    </nav>
+
+    <!-- Main content section -->
+    <div class="main-content" id="contentContainer">
+        <!-- Content for the selected location will be displayed here -->
     </div>
-    <a href="login.html" class="admin-login">Admin Login</a> <!-- Link to login.html -->
-</nav>
 
-<!-- Main content section -->
-<div class="main-content" id="contentContainer">
-    <!-- Content for the selected location will be displayed here -->
-</div>
-
-<script>
-    function showContent(location) {
-        var contentContainer = document.getElementById('contentContainer');
-        // You can customize the content based on the selected location
-        if (location === 'ALAPUZHA') {
-            contentContainer.innerHTML = `
-                <div class="card">
-                    <h2>Shelter 1 in ALAPUZHA</h2>
-                    <p>Location: ALAPUZHA</p>
-                    <p>Capacity: 50</p>
-                    <p>Contact: 123-456-7890</p>
-                </div>
-                <div class="card">
-                    <h2>Shelter 2 in ALAPUZHA</h2>
-                    <p>Location: ALAPUZHA</p>
-                    <p>Capacity: 40</p>
-                    <p>Contact: 987-654-3210</p>
-                </div>
+    <script>
+        function showContent(location) {
+            var contentContainer = document.getElementById('contentContainer');
+            // You can customize the content based on the selected location
+            if (location === 'ALAPUZHA') {
+                contentContainer.innerHTML = `
+            {% for shelter in shelters[0] %}
+        <div class="card">
+            <h2>Shelter {{ loop.index }} in ALAPUZHA</h2>
+            <p>Shelter Name: {{ shelter.shelterName }}</p>
+            <p>Location: {{ shelter.location }}</p>
+            <p>Capacity: {{ shelter.capacity }}</p>
+            <p>Contact: {{ shelter.contactInformation }}</p>
+            <p>Availability status: {{ shelter.status }}</p>
+            <p>Registration Date: {{ shelter.registrationDate }}</p>
+            <p>Shelter type: {{ shelter.shelterType }}</p>
+        </div>
+    {% endfor %}
             `;
-        } else if (location === 'ERNAKULAM') {
-            // Add similar blocks for ERNAKULAM
-            contentContainer.innerHTML = `
-                <div class="card">
-                    <h2>Shelter 1 in ERNAKULAM</h2>
-                    <p>Location: ERNAKULAM</p>
-                    <p>Capacity: 60</p>
-                    <p>Contact: 555-123-4567</p>
-                    <p>Status: Available</p>
-                </div>
-                <div class="card">
-                    <h2>Shelter 2 in ERNAKULAM</h2>
-                    <p>Location: ERNAKULAM</p>
-                    <p>Capacity: 45</p>
-                    <p>Contact: 222-333-4444</p>
-                    <p>Status: Available</p>
-                </div>
+            } else if (location === 'ERNAKULAM') {
+                // Add similar blocks for ERNAKULAM
+                contentContainer.innerHTML = `
+                {% for shelter in shelters[1] %}
+        <div class="card">
+            <h2>Shelter {{loop.index }} in ERNAKULAM</h2>
+            <p>Shelter Name: {{ shelter.shelterName }}</p>
+            <p>Location: {{ shelter.location }}</p>
+            <p>Capacity: {{ shelter.capacity }}</p>
+            <p>Contact: {{ shelter.contactInformation }}</p>
+            <p>Availability status: {{ shelter.status }}</p>
+            <p>Registration Date: {{ shelter.registrationDate }}</p>
+            <p>Shelter type: {{ shelter.shelterType }}</p>
+        </div>
+    {% endfor %}
             `;
-        } else if (location === 'THRISSUR') {
-            // Add similar blocks for THRISSUR
-            contentContainer.innerHTML = `
-                <div class="card">
-                    <h2>Shelter 1 in THRISSUR</h2>
-                    <p>Location: THRISSUR</p>
-                    <p>Capacity: 55</p>
-                    <p>Contact: 999-888-7777</p>
-                    <p>Status: Available</P>
-                </div>
-                <div class="card">
-                    <h2>Shelter 2 in THRISSUR</h2>
-                    <p>Location: THRISSUR</p>
-                    <p>Capacity: 35</p>
-                    <p>Contact: 777-888-9999</p>
-                    <p>Status: Available</P>
-                </div>
+            } else if (location === 'THRISSUR') {
+                // Add similar blocks for THRISSUR
+                contentContainer.innerHTML = `
+                {% for shelter in shelters[2] %}
+        <div class="card">
+            <h2>Shelter {{loop.index}} in THRISSUR</h2>
+            <p>Shelter Name: {{ shelter.shelterName }}</p>
+            <p>Location: {{ shelter.location }}</p>
+            <p>Capacity: {{ shelter.capacity }}</p>
+            <p>Contact: {{ shelter.contactInformation }}</p>
+            <p>Availability status: {{ shelter.status }}</p>
+            <p>Registration Date: {{ shelter.registrationDate }}</p>
+            <p>Shelter type: {{ shelter.shelterType }}</p>
+        </div>
+    {% endfor %}
             `;
-        } else if (location === 'KOTTAYAM') {
-            // Add similar blocks for KOTTAYAM
-            contentContainer.innerHTML = `
-                <div class="card">
-                    <h2>Shelter 1 in KOTTAYAM</h2>
-                    <p>Location: KOTTAYAM</p>
-                    <p>Capacity: 30</p>
-                    <p>Contact: 111-222-3333</p>
-                    <p>Status: Available</P>
-                    
-                </div>
-                <div class="card">
-                    <h2>Shelter 2 in KOTTAYAM</h2>
-                    <p>Location: KOTTAYAM</p>
-                    <p>Capacity: 25</p>
-                    <p>Contact: 444-555-6666</p>
-                    <p>Status: Available</P>
-                </div>
-            `;
+            }
         }
-    }
-</script>
+    </script>
 
 </body>
+
 </html>
