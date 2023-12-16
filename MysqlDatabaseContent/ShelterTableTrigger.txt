@@ -1,6 +1,6 @@
 -- trigger for updating shelter status
 -- to be executed before inserting values into the persons table
-
+DELIMITER // 
 CREATE TRIGGER UpdateShelterStatus
 AFTER INSERT ON Person
 FOR EACH ROW
@@ -34,4 +34,5 @@ BEGIN
         SET Status = 'At Capacity'
         WHERE ShelterID = NEW.ShelterID;
     END IF;
-END;
+END; //
+DELIMITER ;
