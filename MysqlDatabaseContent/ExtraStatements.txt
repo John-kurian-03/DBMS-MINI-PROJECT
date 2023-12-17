@@ -1,0 +1,83 @@
+-- add person count column to shelter table
+
+SET SQL_SAFE_UPDATES = 0;
+UPDATE Shelter
+SET TotalPersons = (
+    SELECT COUNT(*)
+    FROM Person
+    WHERE Person.ShelterID = Shelter.ShelterID
+);
+
+
+
+-- trigger for updating person count in shelter table after insertion
+
+
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_insert
+AFTER INSERT ON Person
+FOR EACH ROW
+BEGIN
+    UPDATE Shelter
+    SET TotalPersons = TotalPersons + 1
+    WHERE ShelterID = NEW.ShelterID;
+END;
+//
+DELIMITER ;
+
+
+-- trigger for updating person count in shelter table after deletion
+
+
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_delete
+AFTER DELETE ON Person
+FOR EACH ROW
+BEGIN
+    UPDATE Shelter
+    SET TotalPersons = TotalPersons - 1
+    WHERE ShelterID = OLD.ShelterID;
+END;
+//
+DELIMITER ;
+
+
+-- trigger for updating shelter status on deletion
+
+
+DELIMITER // 
+CREATE TRIGGER UpdateShelterStatusDelete
+AFTER DELETE ON Person
+FOR EACH ROW
+BEGIN
+    DECLARE shelter_capacity INT;
+    DECLARE shelter_occupancy INT;
+    DECLARE occupancy_percentage DECIMAL(5, 2);
+
+    -- Get the capacity and occupancy of the shelter for the deleted person
+    SELECT Capacity, (
+        SELECT COUNT(*) FROM Person p
+        WHERE p.ShelterID = OLD.ShelterID
+    ) INTO shelter_capacity, shelter_occupancy
+    FROM Shelter s
+    WHERE s.ShelterID = OLD.ShelterID;
+
+    -- Calculate the occupancy percentage
+    SET occupancy_percentage = (shelter_occupancy / shelter_capacity) * 100;
+
+    -- Update the Shelter table based on occupancy percentage
+    IF occupancy_percentage < 80 THEN
+        UPDATE Shelter
+        SET Status = 'Available'
+        WHERE ShelterID = OLD.ShelterID;
+    ELSEIF occupancy_percentage >= 80 AND occupancy_percentage < 100 THEN
+        UPDATE Shelter
+        SET Status = 'Nearing Capacity'
+        WHERE ShelterID = OLD.ShelterID;
+    ELSE
+        UPDATE Shelter
+        SET Status = 'At Capacity'
+        WHERE ShelterID = OLD.ShelterID;
+    END IF;
+END; //
+DELIMITER ;
