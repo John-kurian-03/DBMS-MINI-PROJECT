@@ -85,9 +85,8 @@
         }
         .view{
             background-color: #f4f4f4;
-            width:50%;
-            float:right;
-            height:100%
+            margin: 0 auto; /* Center the div horizontally */
+            width: 60%
         }
         .headings{
             text-align: left;
@@ -131,12 +130,12 @@
 
 <header>
     <h1>Crisis Shelter Management</h1>
-    <p>A platform providing support and shelter to individuals facing crises.</p>
+    <h1>ADMIN DASHBOARD</h1>
 </header>
 
 <nav>
     <div class="dropdown location-dropdown">
-        <a class="location-button" href="#" >Location &#9660;</a>
+        <a class="location-button" href="#" >view &#9660;</a>
         <div class="dropdown-content">
             <a href="#" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
             <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
@@ -144,7 +143,12 @@
             <a href="#" onclick="showContent('KOTTAYAM')">KOTTAYAM</a>
         </div>
     </div>
-    <a href="index.html" class="home">Home</a> 
+    <a href="index.html" class="home">Home</a>
+    
+    <!-- New div with heading "Insert" -->
+    <div class="insertion-button">
+        <a class="insert" href="insert.html">Insert</a>
+    </div>
 </nav>
 
 <div class="main-content" id="contentContainer">
@@ -160,617 +164,93 @@
             // You can customize the content based on the selected location
             if (location === 'ALAPUZHA') {
                contentContainer.innerHTML= `
-               <div class="insertion" id="insertion"><h2>Insert</h2>
-                        <form action="action" method="POST">
-                    <h2>Register Shelter</h2>
-
-                    <label >Shelter Name:</label>
-                    <input type="text" id="ShelterName" name="ShelterName" required>
-
-                    <label >Location:</label>
-                    <input type="text" id="Location" name="Location" value="Alappuzha">
-
-                    <label >Capacity:</label>
-                    <input type="number" id="Capacity" name="Capacity" required>
-
-                    <label >Contact:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    
-                    <label >Registration Date:</label>
-                    <input type="date" id="RegistrationDate" name="RegistrationDate" required>
-
-
-                    <label >Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Available">Available</option>
-                        <option value="Nearing Capacity">Nearing Capacity</option>
-                        <option value="At Capacity">At Capacity</option>
-                    </select>
-
-                    <label >Shelter Type:</label>
-                    <select id="ShelterType" name="ShelterType" required>
-                        <option value="Emergency">Emergency</option>
-                        <option value="Temporary">Temporary</option>
-                        <option value="Long Term">Long Term</option>
-                    </select>
-
-                    <input type="submit" value="Register">
-                    
-                
-                    
-                </form>
-                <form action="process_form.php" method="POST">
-                    <h2>Personal Information</h2>
-
-                    <label for="FirstName">First Name:</label>
-                    <input type="text" id="FirstName" name="FirstName" required>
-
-                    <label for="LastName">Last Name:</label>
-                    <input type="text" id="LastName" name="LastName" required>
-
-                    <label for="DOB">Date of Birth:</label>
-                    <input type="date" id="DOB" name="DOB" required>
-
-                    <label for="Age">Age:</label>
-                    <input type="number" id="Age" name="Age" required>
-
-                    <label for="Gender">Gender:</label>
-                    <select id="Gender" name="Gender" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-
-                    <label for="ContactInformation">Contact Information:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    <label for="EmergencyContact">Emergency Contact:</label>
-                    <input type="text" id="EmergencyContact" name="EmergencyContact" required>
-
-                    <label for="Address">Address:</label>
-                    <input type="text" id="Address" name="Address" required>
-
-                    <label for="EntryDate">Entry Date:</label>
-                    <input type="date" id="EntryDate" name="EntryDate" required>
-
-                    <label for="ExitDate">Exit Date:</label>
-                    <input type="date" id="ExitDate" name="ExitDate">
-
-                    <label for="Status">Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="ShelterID">Shelter ID:</label>
-                    <input type="number" id="ShelterID" name="ShelterID" required>
-
-                    <input type="submit" value="Submit">
-                </form>
-                <form action="process_staff_form.php" method="POST">
-                <h2>Staff Information</h2>
-
-                <label for="FirstName">First Name:</label>
-                <input type="text" id="FirstName" name="FirstName" required>
-
-                <label for="LastName">Last Name:</label>
-                <input type="text" id="LastName" name="LastName" required>
-
-                <label for="DOB">Date of Birth:</label>
-                <input type="date" id="DOB" name="DOB" required>
-
-                <label for="Gender">Gender:</label>
-                <select id="Gender" name="Gender" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-
-                <label for="ContactInformation">Contact Information:</label>
-                <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                <label for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" required>
-
-                <label for="Salary">Salary:</label>
-                <input type="number" id="Salary" name="Salary" step="0.01">
-
-                <label for="Position">Position:</label>
-                <input type="text" id="Position" name="Position" required>
-
-                <label for="EmploymentStatus">Employment Status:</label>
-                <select id="EmploymentStatus" name="EmploymentStatus" required>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Full Time">Full Time</option>
-                </select>
-
-                <label for="DateOfHire">Date of Hire:</label>
-                <input type="date" id="DateOfHire" name="DateOfHire" required>
-
-                <label for="Shift">Shift:</label>
-                <select id="Shift" name="Shift" required>
-                    <option value="Day">Day</option>
-                    <option value="Night">Night</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
-            <form action="process_inventory_form.php" method="POST">
-                <h2>Inventory Information</h2>
-
-                <label for="ItemName">Item Name:</label>
-                <input type="text" id="ItemName" name="ItemName" required>
-
-                <label for="Category">Category:</label>
-                <select id="Category" name="Category" required>
-                    <option value="Food">Food</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <label for="Quantity">Quantity:</label>
-                <input type="number" id="Quantity" name="Quantity" required>
-
-                <label for="UnitOfMeasure">Unit of Measure:</label>
-                <input type="text" id="UnitOfMeasure" name="UnitOfMeasure" required>
-
-                <label for="ExpirationDate">Expiration Date:</label>
-                <input type="date" id="ExpirationDate" name="ExpirationDate" required>
-
-                <label for="DateReceived">Date Received:</label>
-                <input type="date" id="DateReceived" name="DateReceived" required>
-
-                <label for="Condition">Condition:</label>
-                <select id="Condition" name="Condition" required>
-                    <option value="New">New</option>
-                    <option value="Used">Used</option>
-                    <option value="Expired">Expired</option>
-                </select>
-
-                <label for="CostPerUnit">Cost Per Unit:</label>
-                <input type="number" id="CostPerUnit" name="CostPerUnit" step="0.01" required>
-
-                <label for="AvailabilityStatus">Availability Status:</label>
-                <select id="AvailabilityStatus" name="AvailabilityStatus" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
+               <div class="view">
+            <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">ShelterID</th>
+                        <th scope="col">ShelterName</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">ContactInformation</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">ShelterType</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in alpy %}
+                    <tr>
+                        <td>a.ShelterID</td>
+                        <td>a.ShelterName</td>
+                        <td>a.Capacity</td>
+                        <td>a.ContactInformation</td>
+                        <td>a.Status</td>
+                        <td>a.ShelterType</td>
+                    </tr>
+                    {% end for %}
+                    </tbody>
+                </table>
             </div>
                 `; 
             }else if(location === 'ERNAKULAM'){
-                contentContainer.innerHTML=`
-                <div class="insertion" id="insertion"><h2>Insert</h2>
-                        <form action="action" method="POST">
-                    <h2>Register Shelter</h2>
-
-                    <label >Shelter Name:</label>
-                    <input type="text" id="ShelterName" name="ShelterName" required>
-
-                    <label >Location:</label>
-                    <input type="text" id="Location" name="Location" value="Ernakulam">
-
-                    <label >Capacity:</label>
-                    <input type="number" id="Capacity" name="Capacity" required>
-
-                    <label >Contact:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    
-                    <label >Registration Date:</label>
-                    <input type="date" id="RegistrationDate" name="RegistrationDate" required>
-
-
-                    <label >Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Available">Available</option>
-                        <option value="Nearing Capacity">Nearing Capacity</option>
-                        <option value="At Capacity">At Capacity</option>
-                    </select>
-
-                    <label >Shelter Type:</label>
-                    <select id="ShelterType" name="ShelterType" required>
-                        <option value="Emergency">Emergency</option>
-                        <option value="Temporary">Temporary</option>
-                        <option value="Long Term">Long Term</option>
-                    </select>
-
-                    <input type="submit" value="Register">
-                      
-                </form>
-                <form action="process_form.php" method="POST">
-                    <h2>Personal Information</h2>
-
-                    <label for="FirstName">First Name:</label>
-                    <input type="text" id="FirstName" name="FirstName" required>
-
-                    <label for="LastName">Last Name:</label>
-                    <input type="text" id="LastName" name="LastName" required>
-
-                    <label for="DOB">Date of Birth:</label>
-                    <input type="date" id="DOB" name="DOB" required>
-
-                    <label for="Age">Age:</label>
-                    <input type="number" id="Age" name="Age" required>
-
-                    <label for="Gender">Gender:</label>
-                    <select id="Gender" name="Gender" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-
-                    <label for="ContactInformation">Contact Information:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    <label for="EmergencyContact">Emergency Contact:</label>
-                    <input type="text" id="EmergencyContact" name="EmergencyContact" required>
-
-                    <label for="Address">Address:</label>
-                    <input type="text" id="Address" name="Address" required>
-
-                    <label for="EntryDate">Entry Date:</label>
-                    <input type="date" id="EntryDate" name="EntryDate" required>
-
-                    <label for="ExitDate">Exit Date:</label>
-                    <input type="date" id="ExitDate" name="ExitDate">
-
-                    <label for="Status">Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="ShelterID">Shelter ID:</label>
-                    <input type="number" id="ShelterID" name="ShelterID" required>
-
-                    <input type="submit" value="Submit">
-                </form>
-                <form action="process_staff_form.php" method="POST">
-                <h2>Staff Information</h2>
-
-                <label for="FirstName">First Name:</label>
-                <input type="text" id="FirstName" name="FirstName" required>
-
-                <label for="LastName">Last Name:</label>
-                <input type="text" id="LastName" name="LastName" required>
-
-                <label for="DOB">Date of Birth:</label>
-                <input type="date" id="DOB" name="DOB" required>
-
-                <label for="Gender">Gender:</label>
-                <select id="Gender" name="Gender" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-
-                <label for="ContactInformation">Contact Information:</label>
-                <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                <label for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" required>
-
-                <label for="Salary">Salary:</label>
-                <input type="number" id="Salary" name="Salary" step="0.01">
-
-                <label for="Position">Position:</label>
-                <input type="text" id="Position" name="Position" required>
-
-                <label for="EmploymentStatus">Employment Status:</label>
-                <select id="EmploymentStatus" name="EmploymentStatus" required>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Full Time">Full Time</option>
-                </select>
-
-                <label for="DateOfHire">Date of Hire:</label>
-                <input type="date" id="DateOfHire" name="DateOfHire" required>
-
-                <label for="Shift">Shift:</label>
-                <select id="Shift" name="Shift" required>
-                    <option value="Day">Day</option>
-                    <option value="Night">Night</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
-            <form action="process_inventory_form.php" method="POST">
-                <h2>Inventory Information</h2>
-
-                <label for="ItemName">Item Name:</label>
-                <input type="text" id="ItemName" name="ItemName" required>
-
-                <label for="Category">Category:</label>
-                <select id="Category" name="Category" required>
-                    <option value="Food">Food</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <label for="Quantity">Quantity:</label>
-                <input type="number" id="Quantity" name="Quantity" required>
-
-                <label for="UnitOfMeasure">Unit of Measure:</label>
-                <input type="text" id="UnitOfMeasure" name="UnitOfMeasure" required>
-
-                <label for="ExpirationDate">Expiration Date:</label>
-                <input type="date" id="ExpirationDate" name="ExpirationDate" required>
-
-                <label for="DateReceived">Date Received:</label>
-                <input type="date" id="DateReceived" name="DateReceived" required>
-
-                <label for="Condition">Condition:</label>
-                <select id="Condition" name="Condition" required>
-                    <option value="New">New</option>
-                    <option value="Used">Used</option>
-                    <option value="Expired">Expired</option>
-                </select>
-
-                <label for="CostPerUnit">Cost Per Unit:</label>
-                <input type="number" id="CostPerUnit" name="CostPerUnit" step="0.01" required>
-
-                <label for="AvailabilityStatus">Availability Status:</label>
-                <select id="AvailabilityStatus" name="AvailabilityStatus" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
-
-
+                contentContainer.innerHTML= `
+               <div class="view">
+            <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">ShelterID</th>
+                        <th scope="col">ShelterName</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">ContactInformation</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">ShelterType</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in ekm %}
+                    <tr>
+                        <td>a.ShelterID</td>
+                        <td>a.ShelterName</td>
+                        <td>a.Capacity</td>
+                        <td>a.ContactInformation</td>
+                        <td>a.Status</td>
+                        <td>a.ShelterType</td>
+                    </tr>
+                    {% end for %}
+                    </tbody>
+                </table>
             </div>
-                `; 
+                `;  
             }
             else if(location === 'THRISSUR'){
-                contentContainer.innerHTML=`
-                <div class="insertion" id="insertion"><h2>Insert</h2>
-                        <form action="action" method="POST">
-                    <h2>Register Shelter</h2>
-
-                    <label >Shelter Name:</label>
-                    <input type="text" id="ShelterName" name="ShelterName" required>
-
-                    <label >Location:</label>
-                    <input type="text" id="Location" name="Location" value="Thrissur">
-
-                    <label >Capacity:</label>
-                    <input type="number" id="Capacity" name="Capacity" required>
-
-                    <label >Contact:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    
-                    <label >Registration Date:</label>
-                    <input type="date" id="RegistrationDate" name="RegistrationDate" required>
-
-
-                    <label >Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Available">Available</option>
-                        <option value="Nearing Capacity">Nearing Capacity</option>
-                        <option value="At Capacity">At Capacity</option>
-                    </select>
-
-                    <label >Shelter Type:</label>
-                    <select id="ShelterType" name="ShelterType" required>
-                        <option value="Emergency">Emergency</option>
-                        <option value="Temporary">Temporary</option>
-                        <option value="Long Term">Long Term</option>
-                    </select>
-
-                    <input type="submit" value="Register">
-                      
-                </form>
-                <form action="process_form.php" method="POST">
-                    <h2>Personal Information</h2>
-
-                    <label for="FirstName">First Name:</label>
-                    <input type="text" id="FirstName" name="FirstName" required>
-
-                    <label for="LastName">Last Name:</label>
-                    <input type="text" id="LastName" name="LastName" required>
-
-                    <label for="DOB">Date of Birth:</label>
-                    <input type="date" id="DOB" name="DOB" required>
-
-                    <label for="Age">Age:</label>
-                    <input type="number" id="Age" name="Age" required>
-
-                    <label for="Gender">Gender:</label>
-                    <select id="Gender" name="Gender" required>
-                        <option value="Male">Male</option>
-                        <option value="Female">Female</option>
-                    </select>
-
-                    <label for="ContactInformation">Contact Information:</label>
-                    <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                    <label for="EmergencyContact">Emergency Contact:</label>
-                    <input type="text" id="EmergencyContact" name="EmergencyContact" required>
-
-                    <label for="Address">Address:</label>
-                    <input type="text" id="Address" name="Address" required>
-
-                    <label for="EntryDate">Entry Date:</label>
-                    <input type="date" id="EntryDate" name="EntryDate" required>
-
-                    <label for="ExitDate">Exit Date:</label>
-                    <input type="date" id="ExitDate" name="ExitDate">
-
-                    <label for="Status">Status:</label>
-                    <select id="Status" name="Status" required>
-                        <option value="Active">Active</option>
-                        <option value="Inactive">Inactive</option>
-                    </select>
-
-                    <label for="ShelterID">Shelter ID:</label>
-                    <input type="number" id="ShelterID" name="ShelterID" required>
-
-                    <input type="submit" value="Submit">
-                </form>
-                <form action="process_staff_form.php" method="POST">
-                <h2>Staff Information</h2>
-
-                <label for="FirstName">First Name:</label>
-                <input type="text" id="FirstName" name="FirstName" required>
-
-                <label for="LastName">Last Name:</label>
-                <input type="text" id="LastName" name="LastName" required>
-
-                <label for="DOB">Date of Birth:</label>
-                <input type="date" id="DOB" name="DOB" required>
-
-                <label for="Gender">Gender:</label>
-                <select id="Gender" name="Gender" required>
-                    <option value="Male">Male</option>
-                    <option value="Female">Female</option>
-                </select>
-
-                <label for="ContactInformation">Contact Information:</label>
-                <input type="text" id="ContactInformation" name="ContactInformation" required>
-
-                <label for="Address">Address:</label>
-                <input type="text" id="Address" name="Address" required>
-
-                <label for="Salary">Salary:</label>
-                <input type="number" id="Salary" name="Salary" step="0.01">
-
-                <label for="Position">Position:</label>
-                <input type="text" id="Position" name="Position" required>
-
-                <label for="EmploymentStatus">Employment Status:</label>
-                <select id="EmploymentStatus" name="EmploymentStatus" required>
-                    <option value="Part Time">Part Time</option>
-                    <option value="Full Time">Full Time</option>
-                </select>
-
-                <label for="DateOfHire">Date of Hire:</label>
-                <input type="date" id="DateOfHire" name="DateOfHire" required>
-
-                <label for="Shift">Shift:</label>
-                <select id="Shift" name="Shift" required>
-                    <option value="Day">Day</option>
-                    <option value="Night">Night</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
-            <form action="process_inventory_form.php" method="POST">
-                <h2>Inventory Information</h2>
-
-                <label for="ItemName">Item Name:</label>
-                <input type="text" id="ItemName" name="ItemName" required>
-
-                <label for="Category">Category:</label>
-                <select id="Category" name="Category" required>
-                    <option value="Food">Food</option>
-                    <option value="Clothing">Clothing</option>
-                    <option value="Medical">Medical</option>
-                    <option value="Other">Other</option>
-                </select>
-
-                <label for="Quantity">Quantity:</label>
-                <input type="number" id="Quantity" name="Quantity" required>
-
-                <label for="UnitOfMeasure">Unit of Measure:</label>
-                <input type="text" id="UnitOfMeasure" name="UnitOfMeasure" required>
-
-                <label for="ExpirationDate">Expiration Date:</label>
-                <input type="date" id="ExpirationDate" name="ExpirationDate" required>
-
-                <label for="DateReceived">Date Received:</label>
-                <input type="date" id="DateReceived" name="DateReceived" required>
-
-                <label for="Condition">Condition:</label>
-                <select id="Condition" name="Condition" required>
-                    <option value="New">New</option>
-                    <option value="Used">Used</option>
-                    <option value="Expired">Expired</option>
-                </select>
-
-                <label for="CostPerUnit">Cost Per Unit:</label>
-                <input type="number" id="CostPerUnit" name="CostPerUnit" step="0.01" required>
-
-                <label for="AvailabilityStatus">Availability Status:</label>
-                <select id="AvailabilityStatus" name="AvailabilityStatus" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select>
-
-                <label for="ShelterID">Shelter ID:</label>
-                <input type="number" id="ShelterID" name="ShelterID" required>
-
-                <input type="submit" value="Submit">
-            </form>
-
-
+                contentContainer.innerHTML= `
+               <div class="view">
+            <table class="table table-bordered">
+                    <thead>
+                    <tr>
+                        <th scope="col">ShelterID</th>
+                        <th scope="col">ShelterName</th>
+                        <th scope="col">Capacity</th>
+                        <th scope="col">ContactInformation</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">ShelterType</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                        {% for a in tsr %}
+                    <tr>
+                        <td>a.ShelterID</td>
+                        <td>a.ShelterName</td>
+                        <td>a.Capacity</td>
+                        <td>a.ContactInformation</td>
+                        <td>a.Status</td>
+                        <td>a.ShelterType</td>
+                    </tr>
+                    {% end for %}
+                    </tbody>
+                </table>
             </div>
-                `; 
+                `;  
             }
         }
+//ShelterID, ShelterName Capacity, ContactInformation, Status ShelterType
    </script>
-   <div class="view">
-       <table class="table table-bordered">
-            <thead>
-              <tr>
-                <th scope="col">#</th>
-                <th scope="col">First</th>
-                <th scope="col">Last</th>
-                <th scope="col">Handle</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <th scope="row">3</th>
-                <td colspan="2">Larry the Bird</td>
-                <td>@twitter</td>
-              </tr>
-            </tbody>
-          </table>
-          
-    
-    
-    </div>
-</div>
-
-
-</body>
-</html>
