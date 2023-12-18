@@ -98,9 +98,7 @@ def admin():
     alpy = Shelter.query.filter_by(location='ALAPPUZHA').all()
     ekm = Shelter.query.filter_by(location='ERNAKULAM').all()
     tsr = Shelter.query.filter_by(location='THRISSUR').all()
-    print("ALAPPUZHA Shelters:", alpy)
-    print("ERNAKULAM Shelters:", ekm)
-    print("THRISSUR Shelters:", tsr)
+    
     if AdminLoggedin:
         return render_template('admin.html', alpy=alpy, ekm=ekm, tsr=tsr)
     elif request.method == 'POST':
@@ -133,7 +131,7 @@ def submit_form():
         status = request.form['Status']
         shelter_type = request.form['ShelterType']
 
-        new_shelter = Shelter(shelterID=406,shelterName=shelter_name, location=location, capacity=capacity,
+        new_shelter = Shelter(shelterID=407,shelterName=shelter_name, location=location, capacity=capacity,
                               contactInformation=contact_information, registrationDate=registration_date,
                               status=status, shelterType=shelter_type)
 
