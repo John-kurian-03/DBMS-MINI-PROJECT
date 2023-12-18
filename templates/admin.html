@@ -143,11 +143,11 @@
             <a href="#" onclick="showContent('KOTTAYAM')">KOTTAYAM</a>
         </div>
     </div>
-    <a href="index.html" class="home">Home</a>
+    <a href="/" class="home">Home</a>
     
     <!-- New div with heading "Insert" -->
     <div class="insertion-button">
-        <a class="insert" href="insert.html">Insert</a>
+        <a class="insert" href="/insert">Insert</a>
     </div>
 </nav>
 
@@ -165,7 +165,7 @@
             if (location === 'ALAPUZHA') {
                contentContainer.innerHTML= `
                <div class="view">
-            <table class="table table-bordered">
+               <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">ShelterID</th>
@@ -175,19 +175,24 @@
                         <th scope="col">Status</th>
                         <th scope="col">ShelterType</th>
                     </tr>
-                    </thead>
+                    </thead> 
                     <tbody>
                         {% for a in alpy %}
-                    <tr>
-                        <td>a.ShelterID</td>
-                        <td>a.ShelterName</td>
-                        <td>a.Capacity</td>
-                        <td>a.ContactInformation</td>
-                        <td>a.Status</td>
-                        <td>a.ShelterType</td>
+                        <tr>
+                        <td>{{ a.shelterID }}</td>
+                        <td>{{  a.shelterName }}</td>
+                        <td>{{ a.capacity</td>
+                        <td>sgrsrr</td>
+                        <td>sdggsdgsdgs</td>
+                        <td>sdgsgs</td>
                     </tr>
-                    {% end for %}
-                    </tbody>
+
+
+
+
+                    
+                    {% endfor %}
+                </tbody>
                 </table>
             </div>
                 `; 
@@ -208,14 +213,14 @@
                     <tbody>
                         {% for a in ekm %}
                     <tr>
-                        <td>a.ShelterID</td>
-                        <td>a.ShelterName</td>
-                        <td>a.Capacity</td>
-                        <td>a.ContactInformation</td>
-                        <td>a.Status</td>
-                        <td>a.ShelterType</td>
+                        <td>{{a.ShelterID}}</td>
+                        <td>{{a.ShelterName}}</td>
+                        <td>{{a.Capacity}}</td>
+                        <td>{{a.ContactInformation}}</td>
+                        <td>{{a.Status}}</td>
+                        <td>{{a.ShelterType}}</td>
                     </tr>
-                    {% end for %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>
@@ -238,14 +243,14 @@
                     <tbody>
                         {% for a in tsr %}
                     <tr>
-                        <td>a.ShelterID</td>
-                        <td>a.ShelterName</td>
-                        <td>a.Capacity</td>
-                        <td>a.ContactInformation</td>
-                        <td>a.Status</td>
-                        <td>a.ShelterType</td>
+                        <td>{{a.ShelterID}}</td>
+                        <td>{{a.ShelterName}}</td>
+                        <td>{{a.Capacity}}</td>
+                        <td>{{a.ContactInformation}}</td>
+                        <td>{{a.Status}}</td>
+                        <td>{{a.ShelterType}}</td>
                     </tr>
-                    {% end for %}
+                    {% endfor %}
                     </tbody>
                 </table>
             </div>

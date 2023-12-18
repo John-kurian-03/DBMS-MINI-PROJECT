@@ -144,12 +144,12 @@
         <p>A platform providing support and shelter to individuals facing crises.</p>
     </header>
     <nav>
-        <a href="admin.html" >Admin </a> <!-- Link to login.html -->
+        <a href="/admin" >Admin </a> <!-- Link to login.html -->
     </nav>
 
     <!-- Main content section -->
     <div class="main-content" id="contentContainer" >
-        <form action="action" method="POST" class="formcontainer" >
+        <form action="/submit_form" method="POST" class="formcontainer" >
             <h2>Register Shelter</h2>
 
             <label >Shelter Name:</label>
@@ -183,12 +183,12 @@
                 <option value="Long Term">Long Term</option>
             </select>
 
-            <input type="submit" value="Register">
+            <input type="submit" value="Register" name="shelter_register_button">
             
         
             
         </form>
-        <form action="action" method="POST" class="formcontainer" >
+        <form action="/submit_form" method="POST" class="formcontainer" >
             <h2>Personal Information</h2>
 
             <label for="FirstName">First Name:</label>
@@ -233,9 +233,9 @@
             <label for="ShelterID">Shelter ID:</label>
             <input type="number" id="ShelterID" name="ShelterID" required>
 
-            <input type="submit" value="Submit">
+            <input type="submit" value="Submit" name="person_register_button">
         </form>
-        <form action="action" method="POST" class="formcontainer" >
+        <form action="/submit_form" method="POST" class="formcontainer" >
         <h2>Staff Information</h2>
 
         <label for="FirstName">First Name:</label>
@@ -283,9 +283,9 @@
         <label for="ShelterID">Shelter ID:</label>
         <input type="number" id="ShelterID" name="ShelterID" required>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" name="staff_register_button">
     </form>
-    <form action="action" method="POST" class="formcontainer" >
+    <form action="/submit_form" method="POST" class="formcontainer" >
         <h2>Inventory Information</h2>
 
         <label for="ItemName">Item Name:</label>
@@ -333,6 +333,6 @@
         <label for="ShelterID">Shelter ID:</label>
         <input type="number" id="ShelterID" name="ShelterID" required>
 
-        <input type="submit" value="Submit">
+        <input type="submit" value="Submit" name="inventory_register_button">
     </form> <!-- Content for the selected location will be displayed here -->
     </div>
