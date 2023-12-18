@@ -133,7 +133,7 @@ def submit_form():
         status = request.form['Status']
         shelter_type = request.form['ShelterType']
 
-        new_shelter = Shelter(shelterID=404,shelterName=shelter_name, location=location, capacity=capacity,
+        new_shelter = Shelter(shelterID=406,shelterName=shelter_name, location=location, capacity=capacity,
                               contactInformation=contact_information, registrationDate=registration_date,
                               status=status, shelterType=shelter_type)
 

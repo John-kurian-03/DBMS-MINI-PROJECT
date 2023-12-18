@@ -165,7 +165,7 @@
             if (location === 'ALAPUZHA') {
                contentContainer.innerHTML= `
                <div class="view">
-               <table class="table table-bordered">
+            <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">ShelterID</th>
@@ -178,21 +178,18 @@
                     </thead> 
                     <tbody>
                         {% for a in alpy %}
+                    
                         <tr>
                         <td>{{ a.shelterID }}</td>
-                        <td>{{  a.shelterName }}</td>
-                        <td>{{ a.capacity</td>
-                        <td>sgrsrr</td>
-                        <td>sdggsdgsdgs</td>
-                        <td>sdgsgs</td>
-                    </tr>
+                        <td>{{ a.shelterName }}</td>
+                        <td>{{ a.capacity }}</td>
+                        <td>{{ a.contactInformation }}</td>
+                        <td>{{ a.status }}</td>
+                        <td>{{ a.shelterType }}</td>
+                        </tr>
 
-
-
-
-                    
-                    {% endfor %}
-                </tbody>
+                        {% endfor %}
+                    </tbody>
                 </table>
             </div>
                 `; 
@@ -213,12 +210,12 @@
                     <tbody>
                         {% for a in ekm %}
                     <tr>
-                        <td>{{a.ShelterID}}</td>
-                        <td>{{a.ShelterName}}</td>
-                        <td>{{a.Capacity}}</td>
-                        <td>{{a.ContactInformation}}</td>
-                        <td>{{a.Status}}</td>
-                        <td>{{a.ShelterType}}</td>
+                        <td>{{a.shelterID}}</td>
+                        <td>{{a.shelterName}}</td>
+                        <td>{{a.capacity}}</td>
+                        <td>{{a.contactInformation}}</td>
+                        <td>{{a.status}}</td>
+                        <td>{{a.shelterType}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -243,12 +240,12 @@
                     <tbody>
                         {% for a in tsr %}
                     <tr>
-                        <td>{{a.ShelterID}}</td>
-                        <td>{{a.ShelterName}}</td>
-                        <td>{{a.Capacity}}</td>
-                        <td>{{a.ContactInformation}}</td>
-                        <td>{{a.Status}}</td>
-                        <td>{{a.ShelterType}}</td>
+                        <td>{{a.shelterID}}</td>
+                        <td>{{a.shelterName}}</td>
+                        <td>{{a.capacity}}</td>
+                        <td>{{a.contactInformation}}</td>
+                        <td>{{a.status}}</td>
+                        <td>{{a.shelterType}}</td>
                     </tr>
                     {% endfor %}
                     </tbody>
@@ -257,5 +254,4 @@
                 `;  
             }
         }
-//ShelterID, ShelterName Capacity, ContactInformation, Status ShelterType
    </script>
