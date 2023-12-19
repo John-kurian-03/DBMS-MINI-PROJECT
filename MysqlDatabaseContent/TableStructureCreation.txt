@@ -23,7 +23,7 @@ CREATE TABLE Person (
     EmergencyContact VARCHAR(25),
     Address VARCHAR(50),
     EntryDate DATE,
-    ExitDate DATE,
+    ExitDate DATE default NULL,
     Status ENUM('Active', 'Inactive'),
     ShelterID INT,
     FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
