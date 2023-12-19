@@ -47,7 +47,7 @@
             min-width: 120px;
             z-index: 1;
             border-radius: 6px;
-            
+
         }
 
         .dropdown-content a {
@@ -60,11 +60,11 @@
             display: block;
         }
 
-        
+
         .main-content {
             padding: 20px;
             text-align: center;
-            
+
         }
 
         .card {
@@ -79,42 +79,53 @@
             color: #333;
             margin-bottom: 10px;
         }
+
         .main-content {
             background-color: #f4f4f4;
             width: 30%;
-            margin: 0 auto; /* Center the div horizontally */
-            margin-top: 1vh; /* Center the div vertically */
-            padding: 20px; /* Optional padding for better appearance */
-            
+            margin: 0 auto;
+            /* Center the div horizontally */
+            margin-top: 1vh;
+            /* Center the div vertically */
+            padding: 20px;
+            /* Optional padding for better appearance */
+
         }
-        .view{
+
+        .view {
             background-color: #f4f4f4;
-            width:50%;
-            float:right;
-            height:100%
+            width: 50%;
+            float: right;
+            height: 100%
         }
-        .headings{
+
+        .headings {
             text-align: left;
         }
-        input[type="text"],input[type="number"],input[type="date"]
-        {
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
             width: calc(100% - 12px);
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        label{
-            display:block;
+
+        label {
+            display: block;
         }
-        select{
+
+        select {
             margin-bottom: 15px;
-            display:block;
+            display: block;
             border: 1px solid #ccc;
             border-radius: 3px;
             width: calc(100% - 12px);
             text-align: center;
         }
-        input[type="submit"]{
+
+        input[type="submit"] {
             width: 100%;
             background-color: #333;
             color: white;
@@ -123,17 +134,49 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .table-bordered,th,tr,td{
-            width:500px;
-            margin:auto;
+
+        .table-bordered,
+        th,
+        tr,
+        td {
+            width: 500px;
+            margin: auto;
             text-align: center;
             border: 2px solid #333;
         }
+
         .formcontainer {
-        margin-bottom: 20px; /* Add margin between forms */
-        padding: 20px; /* Optional padding for better appearance */
-        background-color: #f9f9f9; /* Add background color */
-    }
+            margin-bottom: 20px;
+            /* Add margin between forms */
+            padding: 20px;
+            /* Optional padding for better appearance */
+            background-color: #f9f9f9;
+
+            /* Add background color */
+            .alert {
+                background-color: #ff0000a5;
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                justify-content: center;
+                font-family: 'Times New Roman', Times, serif;
+                margin-top: 20px;
+            }
+
+            .success {
+                background-color: #00ff5ea5;
+                border: none;
+                border-radius: 3px;
+                width: 100%;
+                height: 30px;
+                text-align: center;
+                justify-content: center;
+                font-family: 'Times New Roman', Times, serif;
+                margin-top: 20px;
+            }
+        }
     </style>
 </head>
 
@@ -144,40 +187,55 @@
         <h1>ADMIN DASHBOARD</h1>
     </header>
     <nav>
-       <!----<a href="/admin" >Admin </a> --><!-- Link to login.html -->
-       <a href="/" class="home">Home</a>
-       <div class="dropdown location-dropdown">
-        <a class="location-button" href="#" >view &#9660;</a>
-        <div class="dropdown-content">
-            <a href="#" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
-            <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
-            <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
+        <!----<a href="/admin" >Admin </a> --><!-- Link to login.html -->
+        <a href="/" class="home">Logout</a>
+        <div class="dropdown location-dropdown">
+            <a class="location-button" href="#">view &#9660;</a>
+            <div class="dropdown-content">
+                <a href="/admin" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
+                <a href="/admin" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
+                <a href="/admin" onclick="showContent('THRISSUR')">THRISSUR</a>
+            </div>
         </div>
-        </div>
-    
-    <!-- New div with heading "Insert" -->
-         <div class="insertion-button">
+
+        <!-- New div with heading "Insert" -->
+        <div class="insertion-button">
             <a class="insert" href="/insert">Insert</a>
         </div>
-        <div >
-            <a class="insert" href="delete.html">Delete</a>
+        <div>
+            <a class="insert" href="/delete">Delete</a>
         </div>
-        <div >
-             <a class="insert" href="checkout.html">Checkout</a>
+        <div>
+            <a class="insert" href="/checkout">Checkout</a>
         </div>
     </nav>
-    <div class="main-content" id="contentContainer" >
-        <form action="/submit_form" method="POST" class="formcontainer" >
+    <div class="main-content" id="contentContainer">
+        <form action="/checkout_form" method="POST" class="formcontainer">
             <h2>CHECKOUT DETAILS</h2>
 
-            <label >Person ID:</label>
+            <label>Person ID:</label>
             <input type="text" id="PersonId" name="PersonId" required>
 
             <label for="ExitDate">Exit Date:</label>
             <input type="date" id="ExitDate" name="ExitDate">
 
-            <input type="submit" value="Submit" name="checkout_button">
-    </form>
+            <input type="submit" value="Checkout" name="checkout_button">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'checkoutsuccess' %}
+            <div class="success">
+                {{ message }}
+            </div>
+            {% elif category == 'checkouterror' %}
+            <div class="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </form>
     </div>
-    
-    </body>
+
+</body>

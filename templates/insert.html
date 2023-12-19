@@ -47,7 +47,7 @@
             min-width: 120px;
             z-index: 1;
             border-radius: 6px;
-            
+
         }
 
         .dropdown-content a {
@@ -60,11 +60,11 @@
             display: block;
         }
 
-        
+
         .main-content {
             padding: 20px;
             text-align: center;
-            
+
         }
 
         .card {
@@ -79,42 +79,54 @@
             color: #333;
             margin-bottom: 10px;
         }
+
         .main-content {
             background-color: #f4f4f4;
             width: 30%;
-            margin: 0 auto; /* Center the div horizontally */
-            margin-top: 1vh; /* Center the div vertically */
-            padding: 20px; /* Optional padding for better appearance */
-            
+            margin: 0 auto;
+            /* Center the div horizontally */
+            margin-top: 1vh;
+            /* Center the div vertically */
+            padding: 20px;
+            /* Optional padding for better appearance */
+
         }
-        .view{
+
+        .view {
             background-color: #f4f4f4;
-            width:50%;
-            float:right;
-            height:100%
+            width: 50%;
+            float: right;
+            height: 100%
         }
-        .headings{
+
+        .headings {
             text-align: left;
         }
-        input[type="text"],input[type="number"],input[type="date"]
-        {
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"],
+        input[type=tel] {
             width: calc(100% - 12px);
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        label{
-            display:block;
+
+        label {
+            display: block;
         }
-        select{
+
+        select {
             margin-bottom: 15px;
-            display:block;
+            display: block;
             border: 1px solid #ccc;
             border-radius: 3px;
             width: calc(100% - 12px);
             text-align: center;
         }
-        input[type="submit"]{
+
+        input[type="submit"] {
             width: 100%;
             background-color: #333;
             color: white;
@@ -123,18 +135,71 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .table-bordered,th,tr,td{
-            width:500px;
-            margin:auto;
+
+        .table-bordered,
+        th,
+        tr,
+        td {
+            width: 500px;
+            margin: auto;
             text-align: center;
             border: 2px solid #333;
         }
+
         .formcontainer {
-        margin-bottom: 20px; /* Add margin between forms */
-        padding: 20px; /* Optional padding for better appearance */
-        background-color: #f9f9f9; /* Add background color */
-    }
+            margin-bottom: 20px;
+            /* Add margin between forms */
+            padding: 20px;
+            /* Optional padding for better appearance */
+            background-color: #f9f9f9;
+            /* Add background color */
+        }
+
+        .alert {
+            background-color: #ff0000a5;
+            border: none;
+            border-radius: 3px;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            justify-content: center;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 20px;
+        }
+
+        .success {
+            background-color: #00ff5ea5;
+            border: none;
+            border-radius: 3px;
+            width: 100%;
+            height: 30px;
+            text-align: center;
+            justify-content: center;
+            font-family: 'Times New Roman', Times, serif;
+            margin-top: 20px;
+        }
     </style>
+
+    <script>
+        function validateUsername() {
+            var usernameInput = document.getElementById('name');
+            var usernameValue = usernameInput.value;
+
+            // Check if the username contains only letters
+            if (!/^[a-zA-Z]+$/.test(usernameValue)) {
+                alert('Error: User name can only contain letters.');
+                usernameInput.focus();
+                return false;
+            }
+
+            return true;
+        }
+
+        function validateForm() {
+            // Call the username validation function before submitting the form
+            return validateUsername();
+        }
+    </script>
 </head>
 
 <body>
@@ -144,56 +209,57 @@
         <h1>ADMIN DASHBOARD</h1>
     </header>
     <nav>
-       <!----<a href="/admin" >Admin </a> --><!-- Link to login.html -->
-       <a href="/" class="home">Home</a>
-       <div class="dropdown location-dropdown">
-        <a class="location-button" href="#" >view &#9660;</a>
-        <div class="dropdown-content">
-            <a href="#" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
-            <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
-            <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
+        <!----<a href="/admin" >Admin <a> --><!-- Link to login.html -->
+        <a href="/" class="home">Logout</a>
+        <div class="dropdown location-dropdown">
+            <a class="location-button" href="#">view &#9660;</a>
+            <div class="dropdown-content">
+                <a href="/admin" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
+                <a href="/admin" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
+                <a href="/admin" onclick="showContent('THRISSUR')">THRISSUR</a>
+            </div>
         </div>
-        </div>
-    
-    <!-- New div with heading "Insert" -->
-         <div class="insertion-button">
+
+        <!-- New div with heading "Insert" -->
+        <div class="insertion-button">
             <a class="insert" href="/insert">Insert</a>
         </div>
-        <div >
-            <a class="insert" href="delete.html">Delete</a>
+        <div>
+            <a class="insert" href="/delete">Delete</a>
         </div>
-        <div >
-             <a class="insert" href="checkout.html">Checkout</a>
+        <div>
+            <a class="insert" href="/checkout">Checkout</a>
         </div>
     </nav>
 
     <!-- Main content section -->
-    <div class="main-content" id="contentContainer" >
-        <form action="/submit_form" method="POST" class="formcontainer" >
+    <div class="main-content" id="contentContainer">
+        <form action="/submit_form" method="POST" class="formcontainer">
             <h2>Register Shelter</h2>
 
-            <label >Shelter Name:</label>
+            <label>Shelter Name:</label>
             <input type="text" id="ShelterName" name="ShelterName" required>
 
-            <label >Location:</label>
+            <label>Location:</label>
             <select id="Location" name="Location" required>
                 <option value="ALAPPUZHA">ALAPPUZHA</option>
                 <option value="ERNAKULAM">ERNAKULAM</option>
                 <option value="THRISSUR">THRISSUR</option>
             </select>
 
-            <label >Capacity:</label>
+            <label>Capacity:</label>
             <input type="number" id="Capacity" name="Capacity" required>
 
-            <label >Contact:</label>
-            <input type="text" id="ContactInformation" name="ContactInformation" maxlength="10" placeholder="1234567890" pattern="[0-9]{10}" required>
+            <label>Contact:</label>
+            <input type="tel" id="ContactInformation" name="ContactInformation" maxlength="10" placeholder="1234567890"
+                pattern="[0-9]{10}" required>
 
-            
-            <label >Registration Date:</label>
+
+            <label>Registration Date:</label>
             <input type="date" id="RegistrationDate" name="RegistrationDate" required>
-            
 
-            <label >Shelter Type:</label>
+
+            <label>Shelter Type:</label>
             <select id="ShelterType" name="ShelterType" required>
                 <option value="Emergency">Emergency</option>
                 <option value="Temporary">Temporary</option>
@@ -201,15 +267,25 @@
             </select>
 
             <input type="submit" value="Register" name="shelter_register_button">
-            
-        
-            
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'sheltersuccess' %}
+            <div class="success">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+
         </form>
-        <form action="/submit_form" method="POST" class="formcontainer" >
+        <form action="/submit_form" method="POST" class="formcontainer">
             <h2>Personal Information</h2>
 
             <label for="FirstName">First Name:</label>
-            <input type="text" id="FirstName" name="FirstName" required>
+            <input type="text" id="FirstName" name="FirstName" pattern="[a-zA-Z]*" required>
 
             <label for="LastName">Last Name:</label>
             <input type="text" id="LastName" name="LastName" required>
@@ -225,10 +301,12 @@
             </select>
 
             <label for="ContactInformation">Contact Information:</label>
-            <input type="text" id="ContactInformation" name="ContactInformation" required>
+            <input type="tel" id="ContactInformation" name="ContactInformation" maxlength="10" placeholder="1234567890"
+                pattern="[0-9]{10}" required>
 
             <label for="EmergencyContact">Emergency Contact:</label>
-            <input type="text" id="EmergencyContact" name="EmergencyContact" required>
+            <input type="tel" id="EmergencyContact" name="EmergencyContact" maxlength="10" placeholder="1234567890"
+                pattern="[0-9]{10}" required>
 
             <label for="Address">Address:</label>
             <input type="text" id="Address" name="Address" required>
@@ -240,96 +318,142 @@
             <input type="number" id="ShelterID" name="ShelterID" required>
 
             <input type="submit" value="Submit" name="person_register_button">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'personsuccess' %}
+            <div class="success">
+                {{ message }}
+            </div>
+            {% elif category == 'personerror' %}
+            <div class="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
         </form>
-        <form action="/submit_form" method="POST" class="formcontainer" >
-        <h2>Staff Information</h2>
+        <form action="/submit_form" method="POST" class="formcontainer">
+            <h2>Staff Information</h2>
 
-        <label for="FirstName">First Name:</label>
-        <input type="text" id="FirstName" name="FirstName" required>
+            <label for="FirstName">First Name:</label>
+            <input type="text" id="FirstName" name="FirstName" required>
 
-        <label for="LastName">Last Name:</label>
-        <input type="text" id="LastName" name="LastName" required>
+            <label for="LastName">Last Name:</label>
+            <input type="text" id="LastName" name="LastName" required>
 
-        <label for="DOB">Date of Birth:</label>
-        <input type="date" id="DOB" name="DOB" required>
+            <label for="DOB">Date of Birth:</label>
+            <input type="date" id="DOB" name="DOB" required>
 
-        <label for="Gender">Gender:</label>
-        <select id="Gender" name="Gender" required>
-            <option value="Male">Male</option>
-            <option value="Female">Female</option>
-        </select>
+            <label for="Gender">Gender:</label>
+            <select id="Gender" name="Gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select>
 
-        <label for="ContactInformation">Contact Information:</label>
-        <input type="text" id="ContactInformation" name="ContactInformation" required>
+            <label for="ContactInformation">Contact Information:</label>
+            <input type="tel" id="ContactInformation" name="ContactInformation" maxlength="10" placeholder="1234567890"
+                pattern="[0-9]{10}" required>
 
-        <label for="Address">Address:</label>
-        <input type="text" id="Address" name="Address" required>
+            <label for="Address">Address:</label>
+            <input type="text" id="Address" name="Address" required>
 
-        <label for="Position">Position:</label>
-        <input type="text" id="Position" name="Position" required>
+            <label for="Position">Position:</label>
+            <input type="text" id="Position" name="Position" required>
 
-        <label for="EmploymentStatus">Employment Status:</label>
-        <select id="EmploymentStatus" name="EmploymentStatus" required>
-            <option value="Part Time">Part Time</option>
-            <option value="Full Time">Full Time</option>
-        </select>
+            <label for="EmploymentStatus">Employment Status:</label>
+            <select id="EmploymentStatus" name="EmploymentStatus" required>
+                <option value="Part Time">Part Time</option>
+                <option value="Full Time">Full Time</option>
+            </select>
 
-        <label for="DateOfHire">Date of Hire:</label>
-        <input type="date" id="DateOfHire" name="DateOfHire" required>
+            <label for="DateOfHire">Date of Hire:</label>
+            <input type="date" id="DateOfHire" name="DateOfHire" required>
 
-        <label for="Shift">Shift:</label>
-        <select id="Shift" name="Shift" required>
-            <option value="Day">Day</option>
-            <option value="Night">Night</option>
-        </select>
+            <label for="Shift">Shift:</label>
+            <select id="Shift" name="Shift" required>
+                <option value="Day">Day</option>
+                <option value="Night">Night</option>
+            </select>
 
-        <label for="ShelterID">Shelter ID:</label>
-        <input type="number" id="ShelterID" name="ShelterID" required>
+            <label for="ShelterID">Shelter ID:</label>
+            <input type="number" id="ShelterID" name="ShelterID" required>
 
-        <input type="submit" value="Submit" name="staff_register_button">
-    </form>
-    <form action="/submit_form" method="POST" class="formcontainer" >
-        <h2>Inventory Information</h2>
+            <input type="submit" value="Submit" name="staff_register_button">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'staffsuccess' %}
+            <div class="success">
+                {{ message }}
+            </div>
+            {% elif category == 'stafferror' %}
+            <div class="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </form>
+        <form action="/submit_form" method="POST" class="formcontainer">
+            <h2>Inventory Information</h2>
 
-        <label for="ItemName">Item Name:</label>
-        <input type="text" id="ItemName" name="ItemName" required>
+            <label for="ItemName">Item Name:</label>
+            <input type="text" id="ItemName" name="ItemName" required>
 
-        <label for="Category">Category:</label>
-        <select id="Category" name="Category" required>
-            <option value="Food">Food</option>
-            <option value="Clothing">Clothing</option>
-            <option value="Medical">Medical</option>
-            <option value="Other">Other</option>
-        </select>
+            <label for="Category">Category:</label>
+            <select id="Category" name="Category" required>
+                <option value="Food">Food</option>
+                <option value="Clothing">Clothing</option>
+                <option value="Medical">Medical</option>
+                <option value="Other">Other</option>
+            </select>
 
-        <label for="Quantity">Quantity:</label>
-        <input type="number" id="Quantity" name="Quantity" required>
+            <label for="Quantity">Quantity:</label>
+            <input type="number" id="Quantity" name="Quantity" required>
 
-        <label for="UnitOfMeasure">Unit of Measure:</label>
-        <input type="text" id="UnitOfMeasure" name="UnitOfMeasure" required>
+            <label for="UnitOfMeasure">Unit of Measure:</label>
+            <input type="text" id="UnitOfMeasure" name="UnitOfMeasure" required>
 
-        <label for="ExpirationDate">Expiration Date:</label>
-        <input type="date" id="ExpirationDate" name="ExpirationDate" required>
+            <label for="ExpirationDate">Expiration Date:</label>
+            <input type="date" id="ExpirationDate" name="ExpirationDate" required>
 
-        <label for="DateReceived">Date Received:</label>
-        <input type="date" id="DateReceived" name="DateReceived" required>
-        </select>
+            <label for="DateReceived">Date Received:</label>
+            <input type="date" id="DateReceived" name="DateReceived" required>
+            </select>
 
-        <label for="CostPerUnit">Cost Per Unit:</label>
-        <input type="number" id="CostPerUnit" name="CostPerUnit" step="0.01" required>
+            <label for="CostPerUnit">Cost Per Unit:</label>
+            <input type="number" id="CostPerUnit" name="CostPerUnit" step="0.01" required>
 
-        <label for="AvailabilityStatus">Availability Status:</label>
-        <select id="AvailabilityStatus" name="AvailabilityStatus" required>
-            <option value="1">1</option>
-            <option value="2">2</option>
-            <option value="3">3</option>
-            <option value="4">4</option>
-            <option value="5">5</option>
-        </select>
+            <label for="AvailabilityStatus">Availability Status:</label>
+            <select id="AvailabilityStatus" name="AvailabilityStatus" required>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+            </select>
 
-        <label for="ShelterID">Shelter ID:</label>
-        <input type="number" id="ShelterID" name="ShelterID" required>
+            <label for="ShelterID">Shelter ID:</label>
+            <input type="number" id="ShelterID" name="ShelterID" required>
 
-        <input type="submit" value="Submit" name="inventory_register_button">
-    </form> <!-- Content for the selected location will be displayed here -->
+            <input type="submit" value="Submit" name="inventory_register_button">
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            {% if category == 'inventorysuccess' %}
+            <div class="success">
+                {{ message }}
+            </div>
+            {% elif category == 'inventoryerror' %}
+            <div class="alert">
+                {{ message }}
+            </div>
+            {% endif %}
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+        </form> <!-- Content for the selected location will be displayed here -->
     </div>

@@ -150,7 +150,7 @@
 
         <nav>
             <!--  <a href="/admin" >Admin </a> --><!-- Link to login.html -->
-              <a href="/" class="home">Home</a>
+              <a href="/" class="home">Logout</a>
              <div class="dropdown location-dropdown">
               <a class="location-button" href="#" >view &#9660;</a>
               <div class="dropdown-content">
@@ -165,10 +165,10 @@
                   <a class="insert" href="/insert">Insert</a>
               </div>
               <div >
-                  <a class="insert" href="delete.html">Delete</a>
+                  <a class="insert" href="/delete">Delete</a>
               </div>
               <div >
-                   <a class="insert" href="checkout.html">Checkout</a>
+                   <a class="insert" href="/checkout">Checkout</a>
               </div>
           </nav>
 
@@ -182,24 +182,27 @@
             if (location === 'ALAPUZHA') {
                 contentContainer.innerHTML = `
                <div class="view">
+                <h2>Shelters</h2>
             <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">ShelterID</th>
                         <th scope="col">ShelterName</th>
                         <th scope="col">Capacity</th>
+                        <th scope="col">Total Perons</th>
                         <th scope="col">ContactInformation</th>
                         <th scope="col">Status</th>
                         <th scope="col">ShelterType</th>
                     </tr>
                     </thead> 
                     <tbody>
-                        {% for a in alpy %}
+                        {% for a in alpyshelter %}
                     
                         <tr>
                         <td>{{ a.shelterID }}</td>
                         <td>{{ a.shelterName }}</td>
                         <td>{{ a.capacity }}</td>
+                        <td>{{ a.totalPersons }}</td>
                         <td>{{ a.contactInformation }}</td>
                         <td>{{ a.status }}</td>
                         <td>{{ a.shelterType }}</td>
@@ -208,6 +211,8 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <br>
+                <h2>People</h2>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -227,7 +232,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for person in persons %}
+                    {% for person in alpypeople %}
                         <tr>
                             <td>{{ person.PersonID }}</td>
                             <td>{{ person.FirstName }}</td>
@@ -246,6 +251,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <br>
+            <h2>Staff Information</h2>
             <table class="table table-bordered">
             <thead>
                 <tr>
@@ -265,7 +272,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for staff in staff_list %}
+                {% for staff in alpystaff %}
                     <tr>
                         <td>{{ staff.StaffID }}</td>
                         <td>{{ staff.FirstName }}</td>
@@ -280,6 +287,42 @@
                         <td>{{ staff.DateOfHire }}</td>
                         <td>{{ staff.Shift }}</td>
                         <td>{{ staff.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <h2>Inventory Information</h2>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Of Measure</th>
+                    <th scope="col">Expiration Date</th>
+                    <th scope="col">Received Date</th>
+                    <th scope="col">Condition</th>
+                    <th scope="col">Cost Per Unit</th>
+                    <th scope="col">Availability Status</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in alpyitem %}
+                    <tr>
+                        <td>{{ item.ItemID }}</td>
+                        <td>{{ item.ItemName }}</td>
+                        <td>{{ item.Category }}</td>
+                        <td>{{ item.Quantity }}</td>
+                        <td>{{ item.UnitOfMeasure }}</td>
+                        <td>{{ item.ExpirationDate }}</td>
+                        <td>{{ item.DateReceived }}</td>
+                        <td>{{ item.Conditions }}</td>
+                        <td>{{ item.CostPerUnit }}</td>
+                        <td>{{ item.AvailabilityStatus }}</td>
+                        <td>{{ item.ShelterID }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
@@ -296,17 +339,19 @@
                         <th scope="col">ShelterID</th>
                         <th scope="col">ShelterName</th>
                         <th scope="col">Capacity</th>
+                        <th scope="col">Total Persons</th>
                         <th scope="col">ContactInformation</th>
                         <th scope="col">Status</th>
                         <th scope="col">ShelterType</th>
                     </tr>
                     </thead>
                     <tbody>
-                        {% for a in ekm %}
+                        {% for a in ekmshelter %}
                     <tr>
                         <td>{{a.shelterID}}</td>
                         <td>{{a.shelterName}}</td>
                         <td>{{a.capacity}}</td>
+                        <td>{{a.totalPersons}}</td>
                         <td>{{a.contactInformation}}</td>
                         <td>{{a.status}}</td>
                         <td>{{a.shelterType}}</td>
@@ -314,6 +359,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <br>
+                <h2>People</h2>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -333,7 +380,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for person in persons %}
+                    {% for person in ekmpeople %}
                         <tr>
                             <td>{{ person.PersonID }}</td>
                             <td>{{ person.FirstName }}</td>
@@ -352,6 +399,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <br>
+            <h2>Staff Information</h2>
             <table class="table table-bordered">
             <thead>
                 <tr>
@@ -371,7 +420,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for staff in staff_list %}
+                {% for staff in ekmstaff %}
                     <tr>
                         <td>{{ staff.StaffID }}</td>
                         <td>{{ staff.FirstName }}</td>
@@ -390,29 +439,69 @@
                 {% endfor %}
                 </tbody>
             </table>
+            <br>
+            <h2>Inventory Information</h2>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Of Measure</th>
+                    <th scope="col">Expiration Date</th>
+                    <th scope="col">Received Date</th>
+                    <th scope="col">Condition</th>
+                    <th scope="col">Cost Per Unit</th>
+                    <th scope="col">Availability Status</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in ekmitem %}
+                    <tr>
+                        <td>{{ item.ItemID }}</td>
+                        <td>{{ item.ItemName }}</td>
+                        <td>{{ item.Category }}</td>
+                        <td>{{ item.Quantity }}</td>
+                        <td>{{ item.UnitOfMeasure }}</td>
+                        <td>{{ item.ExpirationDate }}</td>
+                        <td>{{ item.DateReceived }}</td>
+                        <td>{{ item.Conditions }}</td>
+                        <td>{{ item.CostPerUnit }}</td>
+                        <td>{{ item.AvailabilityStatus }}</td>
+                        <td>{{ item.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+
             </div>
                 `;
             }
             else if (location === 'THRISSUR') {
                 contentContainer.innerHTML = `
                <div class="view">
+                <h2>Shelters</h2>
             <table class="table table-bordered">
                     <thead>
                     <tr>
                         <th scope="col">ShelterID</th>
                         <th scope="col">ShelterName</th>
                         <th scope="col">Capacity</th>
+                        <th scope="col">Total Persons</th>
                         <th scope="col">ContactInformation</th>
                         <th scope="col">Status</th>
                         <th scope="col">ShelterType</th>
                     </tr>
                     </thead>
                     <tbody>
-                        {% for a in tsr %}
+                        {% for a in tsrshelter %}
                     <tr>
                         <td>{{a.shelterID}}</td>
                         <td>{{a.shelterName}}</td>
                         <td>{{a.capacity}}</td>
+                        <td>{{a.totalPersons}}</td>
                         <td>{{a.contactInformation}}</td>
                         <td>{{a.status}}</td>
                         <td>{{a.shelterType}}</td>
@@ -420,6 +509,8 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <br>
+                <h2>People</h2>
                 <table class="table table-bordered">
                 <thead>
                     <tr>
@@ -439,7 +530,7 @@
                     </tr>
                 </thead>
                 <tbody>
-                    {% for person in persons %}
+                    {% for person in tsrpeople %}
                         <tr>
                             <td>{{ person.PersonID }}</td>
                             <td>{{ person.FirstName }}</td>
@@ -458,6 +549,8 @@
                     {% endfor %}
                 </tbody>
             </table>
+            <br>
+            <h2>Staff Information</h2>
             <table class="table table-bordered">
             <thead>
                 <tr>
@@ -477,7 +570,7 @@
                 </tr>
             </thead>
             <tbody>
-                {% for staff in staff_list %}
+                {% for staff in tsrstaff %}
                     <tr>
                         <td>{{ staff.StaffID }}</td>
                         <td>{{ staff.FirstName }}</td>
@@ -492,6 +585,42 @@
                         <td>{{ staff.DateOfHire }}</td>
                         <td>{{ staff.Shift }}</td>
                         <td>{{ staff.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            <br>
+            <h2>Inventory Information</h2>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Item ID</th>
+                    <th scope="col">Item Name</th>
+                    <th scope="col">Category</th>
+                    <th scope="col">Quantity</th>
+                    <th scope="col">Unit Of Measure</th>
+                    <th scope="col">Expiration Date</th>
+                    <th scope="col">Received Date</th>
+                    <th scope="col">Condition</th>
+                    <th scope="col">Cost Per Unit</th>
+                    <th scope="col">Availability Status</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for item in tsritem %}
+                    <tr>
+                        <td>{{ item.ItemID }}</td>
+                        <td>{{ item.ItemName }}</td>
+                        <td>{{ item.Category }}</td>
+                        <td>{{ item.Quantity }}</td>
+                        <td>{{ item.UnitOfMeasure }}</td>
+                        <td>{{ item.ExpirationDate }}</td>
+                        <td>{{ item.DateReceived }}</td>
+                        <td>{{ item.Conditions }}</td>
+                        <td>{{ item.CostPerUnit }}</td>
+                        <td>{{ item.AvailabilityStatus }}</td>
+                        <td>{{ item.ShelterID }}</td>
                     </tr>
                 {% endfor %}
                 </tbody>
