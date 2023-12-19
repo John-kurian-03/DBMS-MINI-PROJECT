@@ -27,7 +27,7 @@ DELIMITER ;
 
 
 -- trigger for updating person count in shelter table after deletion
-
+-- NOT NEEDED RIHGT NOW
 
 DELIMITER //
 CREATE TRIGGER update_total_persons_after_delete
