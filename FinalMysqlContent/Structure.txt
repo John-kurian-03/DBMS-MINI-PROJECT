@@ -1,0 +1,246 @@
+-- Create Shelter Table
+CREATE TABLE Shelter (
+    ShelterID INT AUTO_INCREMENT PRIMARY KEY,
+    ShelterName VARCHAR(50),
+    Location VARCHAR(50),
+    Capacity INT,
+	TotalPersons INT DEFAULT 0,
+    ContactInformation VARCHAR(50),
+    Status ENUM('Available', 'Nearing Capacity', 'At Capacity'),
+    LastUpdated TIMESTAMP DEFAULT CURRENT_TIMESTAMP ON UPDATE CURRENT_TIMESTAMP,
+    RegistrationDate DATE,
+    ShelterType ENUM('Emergency', 'Temporary', 'Long Term')
+);
+
+-- Create Person Table
+CREATE TABLE Person (
+    PersonID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(25),
+    LastName VARCHAR(25),
+    DOB DATE,
+    Age INT,
+    Gender ENUM('Male', 'Female'),
+    ContactInformation VARCHAR(50),
+    EmergencyContact VARCHAR(25),
+    Address VARCHAR(50),
+    EntryDate DATE,
+    ExitDate DATE default NULL,
+    Status ENUM('Active', 'Inactive'),
+    ShelterID INT,
+    FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
+) AUTO_INCREMENT=4000;
+
+-- Create Staff Table
+CREATE TABLE Staff (
+    StaffID INT AUTO_INCREMENT PRIMARY KEY,
+    FirstName VARCHAR(25),
+    LastName VARCHAR(25),
+    DOB DATE,
+    Gender ENUM('Male', 'Female'),
+    ContactInformation VARCHAR(50),
+    Address VARCHAR(50),
+    Salary DECIMAL(10,2) DEFAULT NULL,
+    Position VARCHAR(25),
+    EmploymentStatus ENUM('Part Time', 'Full Time'),
+    DateOfHire DATE,
+    Shift ENUM('Day', 'Night'),
+    ShelterID INT,
+    FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
+) AUTO_INCREMENT = 8000;
+
+-- Create Inventory Table
+CREATE TABLE Inventory (
+    ItemID INT AUTO_INCREMENT PRIMARY KEY,
+    ItemName VARCHAR(25),
+    Category ENUM('Food', 'Clothing', 'Medical', 'Other'),
+    Quantity INT,
+    UnitOfMeasure VARCHAR(25),
+    ExpirationDate DATE,
+    DateReceived DATE,
+    Conditions ENUM('New', 'Used', 'Expired'),
+    CostPerUnit DECIMAL(10,2),
+    AvailabilityStatus ENUM('1', '2', '3', '4', '5'),
+    ShelterID INT,
+    FOREIGN KEY (ShelterID) REFERENCES Shelter(ShelterID)
+);
+
+
+-- trigger for updating shelter status
+-- to be executed before inserting values into the persons table
+DELIMITER // 
+CREATE TRIGGER UpdateShelterStatus
+AFTER INSERT ON Person
+FOR EACH ROW
+BEGIN
+    DECLARE shelter_capacity INT;
+    DECLARE shelter_occupancy INT;
+    DECLARE occupancy_percentage DECIMAL(5, 2);
+
+    -- Get the capacity and occupancy of the shelter for the inserted person
+    SELECT Capacity, (
+        SELECT COUNT(*) FROM Person p
+        WHERE p.ShelterID = NEW.ShelterID AND ExitDate IS NULL
+    ) INTO shelter_capacity, shelter_occupancy
+    FROM Shelter s
+    WHERE s.ShelterID = NEW.ShelterID;
+
+    -- Calculate the occupancy percentage
+    SET occupancy_percentage = (shelter_occupancy / shelter_capacity) * 100;
+
+    -- Update the Shelter table based on occupancy percentage
+    IF occupancy_percentage < 80 THEN
+        UPDATE Shelter
+        SET Status = 'Available'
+        WHERE ShelterID = NEW.ShelterID;
+    ELSEIF occupancy_percentage >= 80 AND occupancy_percentage < 100 THEN
+        UPDATE Shelter
+        SET Status = 'Nearing Capacity'
+        WHERE ShelterID = NEW.ShelterID;
+    ELSE
+        UPDATE Shelter
+        SET Status = 'At Capacity'
+        WHERE ShelterID = NEW.ShelterID;
+    END IF;
+END; //
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER SetDefaultSalary
+BEFORE INSERT ON Staff
+FOR EACH ROW
+SET NEW.Salary = CASE 
+    WHEN NEW.Position = 'Administrator' THEN 60000.00
+    WHEN NEW.Position = 'Nurse' THEN 50000.00
+	WHEN NEW.Position = 'Cleaner' THEN 20000.00
+	WHEN NEW.Position = 'Counselor' THEN 30000.00
+	WHEN NEW.Position = 'Janitor' THEN 15000.00
+	WHEN NEW.Position = 'Cook' THEN 30000.00
+	WHEN NEW.Position = 'Security Guard' THEN 25000.00
+    ELSE NULL
+END; //
+DELIMITER ;
+
+-- trigger to set the status of a person in person table
+-- to be executed before inserting values into the person table
+
+DELIMITER //
+CREATE TRIGGER update_person_status
+BEFORE INSERT ON Person
+FOR EACH ROW
+BEGIN
+    IF NEW.ExitDate IS NOT NULL THEN
+        SET NEW.Status = 'Inactive';
+    ELSE
+        SET NEW.Status = 'Active';
+    END IF;
+END; //
+DELIMITER ;
+
+-- trigger to set the age of a person
+-- (RIGHT(CURDATE(), 5) < RIGHT(NEW.DOB, 5) used to check if the bday has occurred or not in order to minus 1 or 0.
+
+DELIMITER //
+CREATE TRIGGER calculate_age
+BEFORE INSERT ON Person
+FOR EACH ROW
+BEGIN
+    SET NEW.Age = YEAR(CURDATE()) - YEAR(NEW.DOB) - (RIGHT(CURDATE(), 5) < RIGHT(NEW.DOB, 5));
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER SetCondition
+BEFORE INSERT ON Inventory
+FOR EACH ROW
+BEGIN
+    DECLARE currentDate DATE;
+    
+    -- Get the current date
+    SET currentDate = CURDATE();
+    
+    -- Set the Condition based on the specified logic
+    IF NEW.DateReceived >= currentDate - INTERVAL 14 DAY THEN
+        SET NEW.Conditions = 'New';
+    ELSEIF NEW.DateReceived < currentDate - INTERVAL 14 DAY AND NEW.ExpirationDate > currentDate THEN
+        SET NEW.Conditions = 'Used';
+    ELSE
+        SET NEW.Conditions = 'Expired';
+    END IF;
+END; //
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_insert
+AFTER INSERT ON Person
+FOR EACH ROW
+BEGIN
+    UPDATE Shelter
+    SET TotalPersons = TotalPersons + 1
+    WHERE ShelterID = NEW.ShelterID;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_exit_date
+AFTER UPDATE ON Person
+FOR EACH ROW
+BEGIN
+    IF NEW.ExitDate IS NOT NULL AND OLD.ExitDate IS NULL THEN
+        UPDATE Shelter
+        SET TotalPersons = TotalPersons - 1
+        WHERE ShelterID = OLD.ShelterID;
+    END IF;
+END;
+//
+DELIMITER ;
+
+DELIMITER //
+CREATE TRIGGER UpdateShelterStatusExitDate
+AFTER UPDATE ON Person
+FOR EACH ROW
+BEGIN
+    DECLARE occupancy_percentage DECIMAL(5, 2);
+    DECLARE shelter_total_persons INT;
+    DECLARE shelter_capacity INT;
+
+    -- Get the TotalPersons and Capacity values from the Shelter table
+    SELECT TotalPersons, Capacity
+    INTO shelter_total_persons, shelter_capacity
+    FROM Shelter
+    WHERE ShelterID = NEW.ShelterID;
+
+    -- Calculate the occupancy percentage
+    SET occupancy_percentage = (shelter_total_persons / shelter_capacity) * 100;
+
+    -- Update the Shelter table based on occupancy percentage
+    IF occupancy_percentage < 80 THEN
+        UPDATE Shelter
+        SET Status = 'Available'
+        WHERE ShelterID = NEW.ShelterID;
+    ELSEIF occupancy_percentage >= 80 AND occupancy_percentage < 100 THEN
+        UPDATE Shelter
+        SET Status = 'Nearing Capacity'
+        WHERE ShelterID = NEW.ShelterID;
+    ELSE
+        UPDATE Shelter
+        SET Status = 'At Capacity'
+        WHERE ShelterID = NEW.ShelterID;
+    END IF;
+
+END;
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER update_person_status_on_exit
+BEFORE UPDATE ON Person
+FOR EACH ROW
+BEGIN
+    IF NEW.ExitDate IS NOT NULL THEN
+        SET NEW.Status = 'Inactive';
+    END IF;
+END; //
+DELIMITER ;
