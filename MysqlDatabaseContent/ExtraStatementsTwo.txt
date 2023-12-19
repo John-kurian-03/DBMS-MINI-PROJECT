@@ -86,14 +86,11 @@ CREATE PROCEDURE InsertPersonWithCapacityCheck(
     IN p_FirstName VARCHAR(25),
     IN p_LastName VARCHAR(25),
     IN p_DOB DATE,
-    IN p_Age INT,
     IN p_Gender ENUM('Male', 'Female'),
     IN p_ContactInformation VARCHAR(50),
     IN p_EmergencyContact VARCHAR(25),
     IN p_Address VARCHAR(50),
     IN p_EntryDate DATE,
-    IN p_ExitDate DATE,
-    IN p_Status ENUM('Active', 'Inactive'),
     IN p_ShelterID INT
 )
 BEGIN
@@ -112,13 +109,13 @@ BEGIN
     ELSE
         -- Shelter has capacity, proceed with the person insertion
         INSERT INTO Person (
-            FirstName, LastName, DOB, Age, Gender,
+            FirstName, LastName, DOB, Gender,
             ContactInformation, EmergencyContact, Address,
             EntryDate, ExitDate, Status, ShelterID
         ) VALUES (
-            p_FirstName, p_LastName, p_DOB, p_Age, p_Gender,
+            p_FirstName, p_LastName, p_DOB, p_Gender,
             p_ContactInformation, p_EmergencyContact, p_Address,
-            p_EntryDate, p_ExitDate, p_Status, p_ShelterID
+            p_EntryDate, p_ShelterID
         );
     END IF;
 END;
@@ -130,9 +127,9 @@ BEFORE INSERT ON Person
 FOR EACH ROW
 BEGIN
     CALL InsertPersonWithCapacityCheck(
-        NEW.FirstName, NEW.LastName, NEW.DOB, NEW.Age, NEW.Gender,
+        NEW.FirstName, NEW.LastName, NEW.DOB, NEW.Gender,
         NEW.ContactInformation, NEW.EmergencyContact, NEW.Address,
-        NEW.EntryDate, NEW.ExitDate, NEW.Status, NEW.ShelterID
+        NEW.EntryDate, NEW.ShelterID
     );
 END;
 
