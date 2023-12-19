@@ -136,3 +136,37 @@ END;
 //
 
 DELIMITER ;
+
+
+
+done in class 
+
+
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_exit_date
+AFTER UPDATE ON Person
+FOR EACH ROW
+BEGIN
+    IF NEW.ExitDate IS NOT NULL AND OLD.ExitDate IS NULL THEN
+        UPDATE Shelter
+        SET TotalPersons = TotalPersons - 1
+        WHERE ShelterID = OLD.ShelterID;
+        UPDATE Shelter
+        SET occupancy_percentage = (TotalPersons /Capacity) * 100;
+         IF occupancy_percentage < 80 THEN
+            UPDATE Shelter
+            SET Status = 'Available'
+            WHERE ShelterID = NEW.ShelterID;
+        ELSEIF occupancy_percentage >= 80 AND occupancy_percentage < 100 THEN
+            UPDATE Shelter
+            SET Status = 'Nearing Capacity'
+            WHERE ShelterID = NEW.ShelterID;
+        ELSE
+            UPDATE Shelter
+            SET Status = 'At Capacity'
+            WHERE ShelterID = NEW.ShelterID;
+        END IF;
+    END IF;
+END;
+//
+DELIMITER ;
