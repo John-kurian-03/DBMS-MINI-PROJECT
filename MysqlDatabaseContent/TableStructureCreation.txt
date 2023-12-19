@@ -1,6 +1,6 @@
 -- Create Shelter Table
 CREATE TABLE Shelter (
-    ShelterID INT PRIMARY KEY,
+    ShelterID INT AUTO_INCREMENT PRIMARY KEY,
     ShelterName VARCHAR(50),
     Location VARCHAR(50),
     Capacity INT,

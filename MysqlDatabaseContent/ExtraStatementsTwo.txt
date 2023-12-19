@@ -1,0 +1,141 @@
+DELIMITER //
+CREATE TRIGGER update_total_persons_after_exit_date
+AFTER UPDATE ON Person
+FOR EACH ROW
+BEGIN
+    IF NEW.ExitDate IS NOT NULL AND OLD.ExitDate IS NULL THEN
+        UPDATE Shelter
+        SET TotalPersons = TotalPersons - 1
+        WHERE ShelterID = OLD.ShelterID;
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE TRIGGER UpdateShelterStatusExitDate
+AFTER UPDATE ON Shelter
+FOR EACH ROW
+BEGIN
+    DECLARE occupancy_percentage DECIMAL(5, 2);
+
+    -- Check if TotalPersons is updated
+    IF NEW.TotalPersons <> OLD.TotalPersons THEN
+        -- Calculate the occupancy percentage
+        SET occupancy_percentage = (NEW.TotalPersons / NEW.Capacity) * 100;
+
+        -- Update the Shelter table based on occupancy percentage
+        IF occupancy_percentage < 80 THEN
+            UPDATE Shelter
+            SET Status = 'Available'
+            WHERE ShelterID = NEW.ShelterID;
+        ELSEIF occupancy_percentage >= 80 AND occupancy_percentage < 100 THEN
+            UPDATE Shelter
+            SET Status = 'Nearing Capacity'
+            WHERE ShelterID = NEW.ShelterID;
+        ELSE
+            UPDATE Shelter
+            SET Status = 'At Capacity'
+            WHERE ShelterID = NEW.ShelterID;
+        END IF;
+    END IF;
+END;
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE PROCEDURE UpdateConditions()
+BEGIN
+    DECLARE currentDate DATE;
+    
+    -- Get the current date
+    SET currentDate = CURDATE();
+    
+    -- Update conditions based on the specified logic
+    UPDATE Inventory
+    SET Conditions = 
+        CASE
+            WHEN DateReceived >= currentDate - INTERVAL 14 DAY THEN 'New'
+            WHEN DateReceived < currentDate - INTERVAL 14 DAY AND ExpirationDate > currentDate THEN 'Used'
+            ELSE 'Expired'
+        END;
+END;
+//
+DELIMITER ;
+
+
+DELIMITER //
+CREATE EVENT IF NOT EXISTS UpdateConditionsEvent
+ON SCHEDULE EVERY 1 DAY
+DO
+BEGIN
+    CALL UpdateConditions();
+END;
+//
+DELIMITER ;
+
+
+SET GLOBAL event_scheduler = ON;
+
+
+DELIMITER //
+
+CREATE PROCEDURE InsertPersonWithCapacityCheck(
+    IN p_FirstName VARCHAR(25),
+    IN p_LastName VARCHAR(25),
+    IN p_DOB DATE,
+    IN p_Age INT,
+    IN p_Gender ENUM('Male', 'Female'),
+    IN p_ContactInformation VARCHAR(50),
+    IN p_EmergencyContact VARCHAR(25),
+    IN p_Address VARCHAR(50),
+    IN p_EntryDate DATE,
+    IN p_ExitDate DATE,
+    IN p_Status ENUM('Active', 'Inactive'),
+    IN p_ShelterID INT
+)
+BEGIN
+    DECLARE shelter_capacity INT;
+    DECLARE shelter_occupancy INT;
+
+    -- Get the capacity and current occupancy of the associated shelter
+    SELECT Capacity, COUNT(*) INTO shelter_capacity, shelter_occupancy
+    FROM Shelter
+    WHERE ShelterID = p_ShelterID;
+
+    -- Check if the shelter is at capacity
+    IF shelter_occupancy >= shelter_capacity THEN
+        SIGNAL SQLSTATE '45000'
+        SET MESSAGE_TEXT = 'Cannot insert person. Shelter is at capacity.';
+    ELSE
+        -- Shelter has capacity, proceed with the person insertion
+        INSERT INTO Person (
+            FirstName, LastName, DOB, Age, Gender,
+            ContactInformation, EmergencyContact, Address,
+            EntryDate, ExitDate, Status, ShelterID
+        ) VALUES (
+            p_FirstName, p_LastName, p_DOB, p_Age, p_Gender,
+            p_ContactInformation, p_EmergencyContact, p_Address,
+            p_EntryDate, p_ExitDate, p_Status, p_ShelterID
+        );
+    END IF;
+END;
+
+//
+
+CREATE TRIGGER before_insert_person
+BEFORE INSERT ON Person
+FOR EACH ROW
+BEGIN
+    CALL InsertPersonWithCapacityCheck(
+        NEW.FirstName, NEW.LastName, NEW.DOB, NEW.Age, NEW.Gender,
+        NEW.ContactInformation, NEW.EmergencyContact, NEW.Address,
+        NEW.EntryDate, NEW.ExitDate, NEW.Status, NEW.ShelterID
+    );
+END;
+
+//
+
+DELIMITER ;
