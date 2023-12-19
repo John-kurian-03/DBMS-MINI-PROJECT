@@ -59,6 +59,9 @@
         input[type="submit"]:hover {
             background-color: #555;
         }
+        .msg{
+            background-color: #ff0000a5;
+        }
     </style>
 </head>
 <body>
@@ -66,10 +69,24 @@
 <form action="/admin" method="POST">
     <h2>Admin Login</h2>
     <label for="username">Username:</label>
-    <input type="text" id="username" name="username" required>
+    <input type="text" id="username" name="username" autofocus required>
     <label for="password">Password:</label>
     <input type="password" id="password" name="password" required>
     <input type="submit" value="Login">
+    
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <div class="msg">
+            <ul>
+                {% for message in messages %}
+                    {{ message }}
+                {% endfor %}
+            </ul>
+        </div>
+        {% endif %}
+    {% endwith %}
+    
+
 </form>
 
 </body>
