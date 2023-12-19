@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <title>Crisis Shelter Management</title>
     <style>
@@ -44,7 +45,7 @@
             min-width: 120px;
             z-index: 1;
             border-radius: 6px;
-            
+
         }
 
         .dropdown-content a {
@@ -57,11 +58,11 @@
             display: block;
         }
 
-        
+
         .main-content {
             padding: 20px;
             text-align: center;
-            
+
         }
 
         .card {
@@ -76,40 +77,49 @@
             color: #333;
             margin-bottom: 10px;
         }
-        .insertion{
+
+        .insertion {
             background-color: #f4f4f4;
-            width:30%;
-            float:left;
+            width: 30%;
+            float: left;
             height: 50%;
-           
+
         }
-        .view{
+
+        .view {
             background-color: #f4f4f4;
-            margin: 0 auto; /* Center the div horizontally */
+            margin: 0 auto;
+            /* Center the div horizontally */
             width: 60%
         }
-        .headings{
+
+        .headings {
             text-align: left;
         }
-        input[type="text"],input[type="number"],input[type="date"]
-        {
+
+        input[type="text"],
+        input[type="number"],
+        input[type="date"] {
             width: calc(100% - 12px);
             margin-bottom: 15px;
             border: 1px solid #ccc;
             border-radius: 3px;
         }
-        label{
-            display:block;
+
+        label {
+            display: block;
         }
-        select{
+
+        select {
             margin-bottom: 15px;
-            display:block;
+            display: block;
             border: 1px solid #ccc;
             border-radius: 3px;
             width: calc(100% - 12px);
             text-align: center;
         }
-        input[type="submit"]{
+
+        input[type="submit"] {
             width: 100%;
             background-color: #333;
             color: white;
@@ -118,54 +128,59 @@
             border-radius: 3px;
             cursor: pointer;
         }
-        .table-bordered,th,tr,td{
-            width:500px;
-            margin:auto;
+
+        .table-bordered,
+        th,
+        tr,
+        td {
+            width: 500px;
+            margin: auto;
             text-align: center;
             border: 2px solid #333;
         }
     </style>
 </head>
+
 <body>
 
-<header>
-    <h1>Crisis Shelter Management</h1>
-    <h1>ADMIN DASHBOARD</h1>
-</header>
+    <header>
+        <h1>Crisis Shelter Management</h1>
+        <h1>ADMIN DASHBOARD</h1>
+    </header>
 
-<nav>
-    <div class="dropdown location-dropdown">
-        <a class="location-button" href="#" >view &#9660;</a>
-        <div class="dropdown-content">
-            <a href="#" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
-            <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
-            <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
-        </div>
-    </div>
-    <a href="/" class="home">Home</a>
-    
-    <!-- New div with heading "Insert" -->
-    <div class="insertion-button">
-        <a class="insert" href="/insert">Insert</a>
-    </div>
-    <div >
-        <a class="insert" href="delete.html">Delete</a>
-    </div>
-</nav>
+        <nav>
+            <!--  <a href="/admin" >Admin </a> --><!-- Link to login.html -->
+              <a href="/" class="home">Home</a>
+             <div class="dropdown location-dropdown">
+              <a class="location-button" href="#" >view &#9660;</a>
+              <div class="dropdown-content">
+                  <a href="#" onclick="showContent('ALAPUZHA')">ALAPPUZHA</a>
+                  <a href="#" onclick="showContent('ERNAKULAM')">ERNAKULAM</a>
+                  <a href="#" onclick="showContent('THRISSUR')">THRISSUR</a>
+              </div>
+              </div>
+          
+          <!-- New div with heading "Insert" -->
+               <div class="insertion-button">
+                  <a class="insert" href="/insert">Insert</a>
+              </div>
+              <div >
+                  <a class="insert" href="delete.html">Delete</a>
+              </div>
+              <div >
+                   <a class="insert" href="checkout.html">Checkout</a>
+              </div>
+          </nav>
 
-<div class="main-content" id="contentContainer">
-</div>
-
-    
-    
-    
+    <div class="main-content" id="contentContainer">
+    </div>
     <script>
         function showContent(location) {
             var contentContainer = document.getElementById('contentContainer');
-            var display=0;
+            var display = 0;
             // You can customize the content based on the selected location
             if (location === 'ALAPUZHA') {
-               contentContainer.innerHTML= `
+                contentContainer.innerHTML = `
                <div class="view">
             <table class="table table-bordered">
                     <thead>
@@ -193,11 +208,88 @@
                         {% endfor %}
                     </tbody>
                 </table>
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Person ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Contact Information</th>
+                        <th scope="col">Emergency Contact</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Entry Date</th>
+                        <th scope="col">Exit Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Shelter ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td>{{ person.PersonID }}</td>
+                            <td>{{ person.FirstName }}</td>
+                            <td>{{ person.LastName }}</td>
+                            <td>{{ person.DOB }}</td>
+                            <td>{{ person.Age }}</td>
+                            <td>{{ person.Gender }}</td>
+                            <td>{{ person.ContactInformation }}</td>
+                            <td>{{ person.EmergencyContact }}</td>
+                            <td>{{ person.Address }}</td>
+                            <td>{{ person.EntryDate }}</td>
+                            <td>{{ person.ExitDate }}</td>
+                            <td>{{ person.Status }}</td>
+                            <td>{{ person.ShelterID }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact Information</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Employment Status</th>
+                    <th scope="col">Date of Hire</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_list %}
+                    <tr>
+                        <td>{{ staff.StaffID }}</td>
+                        <td>{{ staff.FirstName }}</td>
+                        <td>{{ staff.LastName }}</td>
+                        <td>{{ staff.DOB }}</td>
+                        <td>{{ staff.Gender }}</td>
+                        <td>{{ staff.ContactInformation }}</td>
+                        <td>{{ staff.Address }}</td>
+                        <td>{{ staff.Salary }}</td>
+                        <td>{{ staff.Position }}</td>
+                        <td>{{ staff.EmploymentStatus }}</td>
+                        <td>{{ staff.DateOfHire }}</td>
+                        <td>{{ staff.Shift }}</td>
+                        <td>{{ staff.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
             </div>
-                `; 
-            }else if(location === 'ERNAKULAM'){
-                contentContainer.innerHTML= `
+                `;
+            } else if (location === 'ERNAKULAM') {
+                contentContainer.innerHTML = `
                <div class="view">
+                <h2>Shelters</h2>
             <table class="table table-bordered">
                     <thead>
                     <tr>
@@ -222,11 +314,87 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Person ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Contact Information</th>
+                        <th scope="col">Emergency Contact</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Entry Date</th>
+                        <th scope="col">Exit Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Shelter ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td>{{ person.PersonID }}</td>
+                            <td>{{ person.FirstName }}</td>
+                            <td>{{ person.LastName }}</td>
+                            <td>{{ person.DOB }}</td>
+                            <td>{{ person.Age }}</td>
+                            <td>{{ person.Gender }}</td>
+                            <td>{{ person.ContactInformation }}</td>
+                            <td>{{ person.EmergencyContact }}</td>
+                            <td>{{ person.Address }}</td>
+                            <td>{{ person.EntryDate }}</td>
+                            <td>{{ person.ExitDate }}</td>
+                            <td>{{ person.Status }}</td>
+                            <td>{{ person.ShelterID }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact Information</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Employment Status</th>
+                    <th scope="col">Date of Hire</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_list %}
+                    <tr>
+                        <td>{{ staff.StaffID }}</td>
+                        <td>{{ staff.FirstName }}</td>
+                        <td>{{ staff.LastName }}</td>
+                        <td>{{ staff.DOB }}</td>
+                        <td>{{ staff.Gender }}</td>
+                        <td>{{ staff.ContactInformation }}</td>
+                        <td>{{ staff.Address }}</td>
+                        <td>{{ staff.Salary }}</td>
+                        <td>{{ staff.Position }}</td>
+                        <td>{{ staff.EmploymentStatus }}</td>
+                        <td>{{ staff.DateOfHire }}</td>
+                        <td>{{ staff.Shift }}</td>
+                        <td>{{ staff.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
             </div>
-                `;  
+                `;
             }
-            else if(location === 'THRISSUR'){
-                contentContainer.innerHTML= `
+            else if (location === 'THRISSUR') {
+                contentContainer.innerHTML = `
                <div class="view">
             <table class="table table-bordered">
                     <thead>
@@ -252,8 +420,84 @@
                     {% endfor %}
                     </tbody>
                 </table>
+                <table class="table table-bordered">
+                <thead>
+                    <tr>
+                        <th scope="col">Person ID</th>
+                        <th scope="col">First Name</th>
+                        <th scope="col">Last Name</th>
+                        <th scope="col">DOB</th>
+                        <th scope="col">Age</th>
+                        <th scope="col">Gender</th>
+                        <th scope="col">Contact Information</th>
+                        <th scope="col">Emergency Contact</th>
+                        <th scope="col">Address</th>
+                        <th scope="col">Entry Date</th>
+                        <th scope="col">Exit Date</th>
+                        <th scope="col">Status</th>
+                        <th scope="col">Shelter ID</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for person in persons %}
+                        <tr>
+                            <td>{{ person.PersonID }}</td>
+                            <td>{{ person.FirstName }}</td>
+                            <td>{{ person.LastName }}</td>
+                            <td>{{ person.DOB }}</td>
+                            <td>{{ person.Age }}</td>
+                            <td>{{ person.Gender }}</td>
+                            <td>{{ person.ContactInformation }}</td>
+                            <td>{{ person.EmergencyContact }}</td>
+                            <td>{{ person.Address }}</td>
+                            <td>{{ person.EntryDate }}</td>
+                            <td>{{ person.ExitDate }}</td>
+                            <td>{{ person.Status }}</td>
+                            <td>{{ person.ShelterID }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            <table class="table table-bordered">
+            <thead>
+                <tr>
+                    <th scope="col">Staff ID</th>
+                    <th scope="col">First Name</th>
+                    <th scope="col">Last Name</th>
+                    <th scope="col">DOB</th>
+                    <th scope="col">Gender</th>
+                    <th scope="col">Contact Information</th>
+                    <th scope="col">Address</th>
+                    <th scope="col">Salary</th>
+                    <th scope="col">Position</th>
+                    <th scope="col">Employment Status</th>
+                    <th scope="col">Date of Hire</th>
+                    <th scope="col">Shift</th>
+                    <th scope="col">Shelter ID</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for staff in staff_list %}
+                    <tr>
+                        <td>{{ staff.StaffID }}</td>
+                        <td>{{ staff.FirstName }}</td>
+                        <td>{{ staff.LastName }}</td>
+                        <td>{{ staff.DOB }}</td>
+                        <td>{{ staff.Gender }}</td>
+                        <td>{{ staff.ContactInformation }}</td>
+                        <td>{{ staff.Address }}</td>
+                        <td>{{ staff.Salary }}</td>
+                        <td>{{ staff.Position }}</td>
+                        <td>{{ staff.EmploymentStatus }}</td>
+                        <td>{{ staff.DateOfHire }}</td>
+                        <td>{{ staff.Shift }}</td>
+                        <td>{{ staff.ShelterID }}</td>
+                    </tr>
+                {% endfor %}
+                </tbody>
+            </table>
             </div>
-                `;  
+                `;
             }
         }
-   </script>
+    </script>
