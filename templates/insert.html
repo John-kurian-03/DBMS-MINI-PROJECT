@@ -182,11 +182,13 @@
 
     <script>
         function validateUsername() {
-            var usernameInput = document.getElementById('name');
+            var usernameInput = document.getElementById('FirstName');
+            var lastnameInput = document.getElementById('LastName');
             var usernameValue = usernameInput.value;
+            var lastnameValue = lastnameInput.value;
 
             // Check if the username contains only letters
-            if (!/^[a-zA-Z]+$/.test(usernameValue)) {
+            if (!/^[a-zA-Z]+$/.test(usernameValue) || !/^[a-zA-Z]+$/.test(lastnameValue)) {
                 alert('Error: User name can only contain letters.');
                 usernameInput.focus();
                 return false;
@@ -281,7 +283,7 @@
 
 
         </form>
-        <form action="/submit_form" method="POST" class="formcontainer">
+        <form action="/submit_form" method="POST" class="formcontainer" onsubmit="return validateForm()">
             <h2>Personal Information</h2>
 
             <label for="FirstName">First Name:</label>

@@ -272,7 +272,8 @@ def submit_form():
         # Check if ShelterID exists in Shelter table
         shelter_exists = Shelter.query.filter_by(shelterID=shelter_id).first()
         # Check if Shelter is at capacity
-        shelter_capacity = shelter_exists.status
+        if shelter_exists:
+            shelter_capacity = shelter_exists.status
 
         if shelter_exists is None:
             flash("Shelter with ID {} does not exist.".format(shelter_id), 'personerror')
